@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+<script src="consultas.js"></script>
+
+<script>
+	function enviar(id){
+		location.href='/actualizarExtintor?id='+id;
+	}
+</script> 
+
+<title>CEST - Extintores</title>
+<script type="text/javascript">
+	function filtrar(){
+		var sede = document.getElementById('sedeSelected').value;
+		var bloque = document.getElementById('bloqueSelected').value;
+		var piso = document.getElementById('pisoSelected').value;
+		var idelemento = document.getElementById('idelemento').value;
+		location.href='/consulta?tipo=extintor&nombresede='+sede+'&nombrebloque='+bloque+'&nombrepiso='+piso+'&idelemento='+idelemento;
+	}
+	
+</script>
+</head>
+<<<<<<< HEAD
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">Consulta de extintores</h1>
+		</div>
+		<div class="row"> 
+		<div class="col-md-2"> 
+			<label>Identificador</label> <br>
+			<input id="idelemento" type="text" class="form-control">
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<label>Sede</label> <br>
+			<select id="sedeSelected"  style="width: 100%" onchange="filtrar();" >
+			<option></option>
+			<th:block th:each="sede:${sedes}">
+			   	<option th:text="${sede.nombre}" ></option>
+			</th:block>				   	
+
+			</select>
+		</div>
+		<div class="col-md-2">
+			<label>Bloque</label> <br>
+			<select id="bloqueSelected"  style="width: 100%" onchange="filtrar();" >
+			<option></option>
+			<th:block th:each="bloque:${bloques}">
+			   	<option th:text="${bloque.letra}" ></option>
+			</th:block>	   	
+			</select>
+		</div>
+		<div class="col-md-2">
+			<label>Piso</label> <br>
+			<select id="pisoSelected"  style="width: 100%" onchange="filtrar();" >
+			<option></option>
+			<th:block th:each="piso:${pisos}">
+			   	<option th:text="${piso.numero}" ></option>
+			</th:block>	   	
+
+			</select>
+		</div>
+		
+		<div class="col-md-2"> 
+			<a class="btn btn-primary" onclick="filtrar();"/> <span class="glyphicon glyphicon-search"></span></a>
+		 </div>
+		
+		
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+		
+	</div>
+	<div class="container">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+    			<div class="form-group">
+    				<table id="registros" class="table table-bordered table-striped">
+    				
+    					<tr>
+=======
+<nav id="menu"></nav>
+<script>
+$.get("/navBar", function(data){
+    $("#menu").replaceWith(data);
+});
+</script>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div>
+			<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color: white">Consulta de extintores</h1>
+		</div>
+		<div class="container">
+			<h2>Filtros de búsqueda</h2>
+			<div class="row"> 
+				<div class="col-md-2"> 
+					<label>Identificador</label> <br>
+					<input id="id" name="id" type="text" class="form-control" onchange="BuscarExt();">
+				</div>
+				<div class="col-md-2">
+					<label>Sede</label> <br>
+					<select id="sede" name="sede" class="form-control" style="width: 100%" onchange="ObtenerBloques(); BuscarUbicacion();">
+						<option value="">Todos</option>
+					   	<th:block th:each="sede:${sedes}">
+					   		<option th:text="${sede.nombre}"></option>	
+						</th:block>				   	
+					</select>
+				</div>
+				<div class="col-md-2">
+					<label>Bloque</label> <br>
+						<select id="bloque" name="bloque" class="form-control" style="width: 100%" onchange="ObtenerPisos(); BuscarUbicacion();">
+						
+						</select>
+				</div>
+				<div class="col-md-2">
+					<label>Piso</label> <br>
+						<select id="piso" name="piso" class="form-control" style="width: 100%" onchange="BuscarUbicacion();">
+				
+						</select>
+				</div>
+
+				<div class="col-md-1">
+					<br>
+					<button class="btn btn-primary" onclick="LimpiarFiltros();">Limpiar filtros</button>
+				</div>
+	 		</div>
+		</div>
+	 	<br>
+	 	
+	 	<div class="container">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+    			<div id="contenido" class="form-group">
+    				<table id="Extintores" class="table table-bordered">
+    					<tr class="bg-primary">
+>>>>>>> backup
+	    					<td><label>Identificador</label></td>
+							<td><label>Tipo</label></td>
+							<td><label>Tamaño</label></td>
+							<td><label>Fecha ultima recarga</label></td>
+							<td><label>Fecha de vencimiento</label></td>
+							<td><label>Caducidad (años)</label></td>
+							<td><label>Sede</label></td>
+							<td><label>Bloque</label></td>
+							<td><label>Piso</label></td>
+							<td><label>Estado</label></td>
+							<td><label>Acciones</label></td>
+						</tr>
+    					<th:block th:each="extintor:${extintores}">
+						      <tr>
+						         <td th:text="${extintor.idelemento}"><label>Identificador</label></td>
+						         <td th:text="${extintor.fichatecnica}"><label>Tipo</label></td>
+						         <td th:text="${extintor.tamanio}"><label>Tamaño</label></td>
+						         <td th:text="${extintor.fechaultimarecarga}"><label>Fecha de recarga</label></td>
+						         <td th:text="${extintor.fechavencimiento}"><label>Fecha de vencimiento</label></td>
+						         <td th:text="${extintor.caducidadanios}"><label>Caducidad (años)</label></td>
+						         <td th:text="${extintor.elemento.piso.bloque.sede.nombre}"><label>Sede</label></td>
+						         <td th:text="${extintor.elemento.piso.pisoPk.letrabloque}"><label>Bloque</label></td>
+						         <td th:text="${extintor.elemento.piso.pisoPk.numero}"><label>Piso</label></td>
+						         <td th:text="${extintor.estado}"><label>Estado</label></td>		        
+						         <td align="center">
+						         	<button th:id="${extintor.elemento.id}" class="glyphicon glyphicon-pencil btn btn-primary" onclick="enviar(this.id);" title="Editar Extintor" ></button>
+								</td>
+						      </tr>
+						</th:block>
+			        </table>
+    			</div>
+    			
+    			<div class="col-md-5"></div>
+	    		<div class="col-md-2">
+	    			<button class="btn btn-lg btn-primary" onclick="location.href='/registrarExtintor'">Registrar</button>
+	    		</div>
+	    		<div class="col-md-5"></div>
+		</div>
+		</div>
+	</div>
+	
+</body>
+</html>

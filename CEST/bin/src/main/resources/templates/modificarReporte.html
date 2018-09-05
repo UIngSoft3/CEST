@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<script>
+	function enviar(id){
+		location.href='/actualizarExtintor?id='+id;
+	}
+</script>
+
+<title>CEST - Reportes</title>
+
+</head>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">Modificar Reporte</h1>
+		</div>
+
+
+
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	</div>
+	<div class="container" style="text-align:center;">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+    			<div class="form-group" >
+    				<div>
+    					<div>
+    						Id: <input type="text" name="" value="2354">
+    					</div>
+
+    					<div>
+    						Fecha: <input type="text" name="" value="22/10/2017">
+    					</div>
+    					<div>
+    						Descripcion:
+    					</div>
+    					<div>
+    						<textarea rows="4" cols="50">En el edificio c, al llegar al 3er piso el primer extintor de la columna de la izquierda se encuentra quebrado el vidrio de la caja que lo contiene.
+    						</textarea>
+    					</div>
+
+    					<div>Argumentacion:</div>
+    					<div>
+    						<textarea rows="4" cols="50"> El vidrio se encuentra quebrado</textarea>
+    					</div>
+
+    					<div>
+    						Estado: <input type="text" name="" value="Pendiente">
+    					</div>
+
+    					<div>
+    						Visibilidad: <input type="text" name="" value="No leido">
+    					</div>
+
+
+
+    				</div>
+    			</div>
+
+    			<div class="col-md-5"></div>
+	    		<div class="col-md-2">
+	    			<button class="btn btn-lg btn-primary">Modificar</button>
+	    		</div>
+	    		<div class="col-md-5"></div>
+	</div>
+</body>
+</html>

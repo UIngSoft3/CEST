@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	 	<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<a class="navbar-brand">CEST</a>
+	    	</div>
+	    	<ul class="nav navbar-nav">
+<<<<<<< HEAD
+	      		<li class="active"><a href="#">Home</a></li>
+	      		<li><a href="#">Page <span class="badge">5</span></a></li>
+=======
+	      		<li class="active"><a href="/home">Home</a></li>
+	      		<li class="dropdown">
+		      		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes no leidos 
+		      			<span id ="notificados" class="badge" > </span>
+		      		</a>
+		      		<ul class="dropdown-menu">
+		      			<li>P1</li>
+		      			<li>P2</li>
+		      			<li>P3</li>
+		      			
+		      		</ul>
+	      		</li>
+>>>>>>> b65b2d959d0dd4a1493ddcd8b35cf52587784b4f
+	      		<li><a href="#">Page 2</a></li>
+	      		<li><a href="#">Page 3</a></li>
+	    	</ul>
+	  	</div>
+	</nav>
+</body>
+<script type="text/javascript">
+	var consulta = function(){
+		$.post( "/buscarCambioBD",
+				{},
+				function( reportes ) {
+					$('#notificados').text(''+Object.keys(reportes).length);
+					$.each(reportes, 
+							function(i,reporte){
+								//Notificacion infinita
+								if(reporte.notificado == "No"){
+									console.log("Notificando reporte");
+									new PNotify({
+									    title: 'Nuevo Reporte',
+									    text: 'Han enviado un reporte.',
+									    type: 'info'
+									});
+									
+									//Cambiar estado notificado
+									$.post( "/cambiarNotificado",
+											{id:reporte.id},
+											function( report ) {
+												
+																
+											}
+									);
+									//Fin estado notificado									
+								}
+									
+							}
+					);				
+				}
+		);
+	};	
+	var intervalo = 1000; //milisegundos
+	setInterval(consulta, intervalo);
+
+</script>
+</html>

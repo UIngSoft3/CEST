@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<title>CEST - Index</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Bienvenido a CEST</h1>
+			<p align="justify" style="color:white"> 
+			Hola! Bienvenido a CEST.
+			En este sistema podrás gestionar información acerca de los elementos de seguridad (Extintores, Camilla y Botiquines) y,
+			además podrás dar reporte sobre el estado en el que se encuentre alguno de estos elementos.
+			</p>
+		</div>
+		<p align="center">
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=general'">Consultar elementos</button>
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/iniciarSesion'">Iniciar Sesión</button>
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/registrarReporte'">Reportar elemento</button>
+		</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<script>
+	function obtenerId(){
+		var id = document.getElementById('id').value;
+		//location.href='/actualizarExtintor?id='+id;
+	}
+</script>
+
+<title>CEST - Reportes</title>
+
+</head>
+
+<nav id="menu"></nav>
+
+<script>
+$.get("/navBar", function(data){
+    $("#menu").replaceWith(data);
+});
+</script>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Modificar Reporte</h1>
+		</div>
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	</div>
+	<div class="container" style="text-align:center;">
+	
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+				<form action="/modificarReporte" th:object="${reporte}" method="post">
+					  <div>
+    					<div>
+    						Id: <input type="text" id="id" name="id" required th:value="${reporte.id}" readonly/>
+    					</div>
+
+    					<div>
+    						Fecha: <label name="fecha" th:text="${reporte.fechareporte}"> </label>
+    					</div>
+    					<div>
+    						Ubicacion: <label name="ubicacion" th:text="${reporte.ubicacion}"> </label>
+    					</div>
+    					<div>
+    						Descripcion:
+    					</div>
+    					<div>
+    						<textarea id="descripcion" name="descripcion" th:value="${reporte.descripcion}" th:text="${reporte.descripcion}" rows="4" cols="50"> </textarea>
+    					</div>
+
+    					<div>Argumentacion:</div>
+    					<div>
+    						<textarea id="argumentacion" name="argumentacion" th:value="${reporte.argumento}" th:text="${reporte.argumento}" rows="4" cols="50"> </textarea>
+    					</div>
+
+    					<div>
+    						Estado: <label name="estado" th:text="${reporte.estado}" > </label>
+    					</div>
+
+    					<div>
+    						Leido: <label name="visibilidad" th:text="${reporte.leido}"> </label>
+    					</div>
+    					
+    				</div>
+   					<a href='/consultarReporte'> <span class="glyphicon glyphicon-arrow-left btn btn-danger"> </span></a>
+				 	 <input class="btn btn-lg btn-primary"  type="submit" value="Modificar">
+				 	 
+				</form> 
+				  
+	    		<div class="col-md-5"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+
+<title>CEST - Reportes</title>
+
+</head>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">Consultar Reporte</h1>
+		</div>
+
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	</div>
+	<div class="container">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+    			<div class="form-group">
+    				<table id="registros" class="table table-bordered table-striped">
+    					<tr>
+	    					<td><label>Elemento</label></td>
+							<td><label>Fecha</label></td>
+							<td><label>Ubicacion</label></td>
+							<td><label>Estado</label></td>
+							<td><label>Visibilidad</label></td>
+					</tr>
+
+					 <tr>
+					    <td <label>2354</label></td>
+					    <td <label>22/10/2017</label></td>
+					    <td <label>En el edificio c, al llegar al 3er piso el primer extintor de la columna de la izquierda se encuentra quebrado el vidrio de la caja que lo contiene.</label></td>
+					    <td <label>Pendiente</label></td>
+					    <td <label>No leido</label></td>
+					    <td >
+					    	<a href="modificarReporte.html" class="glyphicon glyphicon-pencil btn btn-primary" ></a>
+						</td>
+					 </tr>
+
+					 <tr>
+					    <td <label>2586</label></td>
+					    <td <label>22/10/2017</label></td>
+					    <td <label>Edificio D, Piso 3</label></td>
+					    <td <label>Revisado</label></td>
+					    <td <label>leido</label></td>
+					    <td>
+						<button th:id="${extintor.elemento.id}" class="glyphicon glyphicon-pencil btn btn-primary"></button>
+						</td>
+					 </tr>
+
+					<tr>
+						<td <label>2586</label></td>
+  					    <td <label>22/10/2017</label></td>
+  					    <td <label>Edificio D, Piso 3</label></td>
+  					    <td <label>Revisado</label></td>
+  					    <td <label>leido</label></td>
+					    <td >
+							<button th:id="${extintor.elemento.id}" class="glyphicon glyphicon-pencil btn btn-primary"></button>
+						</td>
+					 </tr>
+			        </table>
+    			</div>
+    			<div class="col-md-5"></div>
+	</div>
+</body>
+</html>

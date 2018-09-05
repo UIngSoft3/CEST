@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+
+<title>Reportar elemento - CEST</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Reportar elemento</h1>
+			<p align="center" style="color:white"> 
+			En este espacio podrás enviar un reporte sobre el estado en que encuentres un elemento.
+			<br>
+			Con tu reporte podremos tener nuestros elementos de seguridad en las mejores condiciones.
+			</p>
+		</div>
+		
+		<div class="container">
+			<h2>Por favor llene todos los campos</h2>
+			<form class="form-signin" action="/registrarReporte" method="post">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="row">
+							<div>
+								<label>Tipo de elemento</label>
+								<select id="tipoelemento" name="tipoelemento" class="form-control">
+									<option value="">Seleccione</option>
+									<option value="Extintor">Extintor</option>
+									<option value="Botiquin">Botiquin</option>
+									<option value="Camilla">Camilla</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+							<br>
+								<label>Ubicacion:</label>
+							</div>
+						</div>
+						<div class="row">
+							<div>
+								<label>Sede</label>
+								<select id="sede" name="sede" class="form-control" onchange="ObtenerBloques();">
+									<option value="">Seleccione</option>
+									<th:block th:each="sede:${sedes}">
+								   		<option th:text="${sede.nombre}"></option>	
+								   	</th:block>	 
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div>
+								<label>Bloque</label>
+								<select id="bloque" name="bloque" class="form-control" onchange="ObtenerPisos();">
+								<option value="">Seleccione</option> 
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div>
+								<label>Piso</label>
+								<select id="piso" name="piso" class="form-control">	
+								<option value="">Seleccione</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-6">
+						<div class="row">
+							<div>
+								<label>Descripción</label>
+								<textarea id="descripcion" name="descripcion" class ="form-control"  rows="12" cols="10"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5"></div>
+					<div class="col-md-2">
+						<br>
+						<button type="submit" class="btn btn-primary btn-block">Enviar reporte</button>
+					</div>
+					<div class="col-md-5"></div>
+				</div>	
+			</form>
+		</div>
+	</div>
+</body>
+</html>

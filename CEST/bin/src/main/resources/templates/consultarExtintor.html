@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>CEST - Extintores</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">Consulta de extintores</h1>
+		</div>
+		
+	</div>
+	<div class="container">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+    			<div class="form-group">
+    				<table id="registros" class="table table-bordered table-striped">
+    					<tr>
+	    					<td><label>Identificador</label></td>
+							<td><label>Tipo</label></td>
+							<td><label>Tamaño</label></td>
+							<td><label>Fecha de instalación</label></td>
+							<td><label>Fecha de recarga</label></td>
+							<td><label>Fecha de vencimiento</label></td>
+							<td><label>Caducidad en años</label></td>
+							<td><label>Estado</label></td>
+						</tr>
+    					<th:block th:each="extintor:${extintores}">
+						      <tr>
+						         <td th:text="${extintor.idelemento}"><label>Identificador</label></td>
+						         <td th:text="${extintor.fichatecnica.tipo}"><label>Tipo</label></td>
+						         <td th:text="${extintor.tamanio}"><label>Tamaño</label></td>
+						         <td th:text="${extintor.fechainstalacion}"><label>Fecha de instalación</label></td>
+						         <td th:text="${extintor.fechaultimarecarga}"><label>Fecha de recarga</label></td>
+						         <td th:text="${extintor.fechavencimiento}"><label>Fecha de vencimiento</label></td>
+						         <td th:text="${extintor.caducidadanios}"><label>Caducidad(años)</label></td>
+						         <td th:text="${extintor.estado}"><label>estado</label></td>
+						      </tr>
+						</th:block>
+			        </table>
+    			</div>
+</body>
+</html>

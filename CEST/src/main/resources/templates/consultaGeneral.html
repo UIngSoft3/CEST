@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+<script src="consultaGeneral.js"></script>
+
+<title>CEST - General</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="container">
+			<div class="jumbotron" style="background: rgb(13,67,113)">
+				<h1 align="center" style="color: white">Consulta General</h1>
+			</div>
+		
+			<div class="container">
+				<h2>Filtros de búsqueda</h2>
+				<div class="row"> 
+					<div class="col-md-2"> 
+						<label>Tipo de elemento</label> <br>
+						<input id="tipo" name="tipo" type="text" class="form-control" onchange="BuscarElmt();">
+					</div>
+					<div class="col-md-2">
+						<label>Sede</label> <br>
+						<select id="sede" name="sede" class="form-control" style="width: 100%" onchange="ObtenerBloques(); BuscarUbicacionGen();">
+							<option value="">Todos</option>
+						   	<th:block th:each="sede:${sedes}">
+						   		<option th:text="${sede.nombre}"></option>	
+							</th:block>				   	
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label>Bloque</label> <br>
+							<select id="bloque" name="bloque" class="form-control" style="width: 100%" onchange="ObtenerPisos(); BuscarUbicacionGen();">
+							
+							</select>
+					</div>
+					<div class="col-md-2">
+						<label>Piso</label> <br>
+							<select id="piso" name="piso" class="form-control" style="width: 100%" onchange="BuscarUbicacionGen();">
+					
+							</select>
+					</div>
+	
+					<div class="col-md-1">
+						<br>
+						<button class="btn btn-primary" onclick="LimpiarFiltrosGen();">Limpiar filtros</button>
+					</div>
+		 		</div>
+			</div>
+		 	<br>
+		
+			<div class="container">
+				<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+	    		<div id="contenido" class="form-group">
+	    			<table id="Elementos" class="table table-bordered">
+	    				<tr class="bg-primary">
+		    				<td><label>Tipo de elemento</label></td>
+							<td><label>Id</label></td>
+							<td><label>Ubicación</label></td>
+							<td><label>Tipo</label></td>
+							<td><label>Fecha de vencimiento</label></td>
+						</tr>
+	    				<th:block th:each="elemento:${elementos}">
+						      <tr>
+						         <td th:text="${elemento.tipoelemento}"><label>Tipo de elemento</label></td>
+						         <td th:text="${elemento.id}"><label>Id</label></td>
+						         <td th:text="${elemento.ubicacion}"><label>Ubicación</label></td>
+						         <td th:text="${elemento.tipo}"><label>Tipo</label></td>
+						         <td th:text="${elemento.fechavencimiento}"><label>Fecha de vencimiento</label></td>
+						      </tr>
+						</th:block>
+				   	</table>
+	    		</div>
+	    	</div>
+		</div>		
+	</div>
+</body>
+</html>

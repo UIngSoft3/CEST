@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<title>Inicio de sesión - CEST</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">CEST - Inicio de sesión</h1>
+		</div>
+		
+		<div class="col-md-3"></div>
+		<div class="container col-md-6 center">
+			<form class="form-signin" action="#" th:action="@{/iniciarSesion}" th:object="${usuario}" method="post">
+		        <h2 class="form-signin-heading">Por favor inicie sesión</h2>
+		        
+		        <label class="sr-only">Nombre de usuario</label>
+		        <input type="text" th:field="*{usuario}" class="form-control" placeholder="Nombre de usuario" required autofocus pattern="[A-Za-z]+" title="el campo solo puede conterner letras">
+		        
+		        <label class="sr-only">Contraseña</label>
+		        <input type="password" th:field="*{contrasena}" class="form-control" placeholder="Contraseña" required>
+		        
+		        <div class="checkbox">
+		          <label>
+		            <input type="checkbox" value="remember-me"> Recuérdame
+		          </label>
+		        </div>
+		        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+		    </form>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</body>
+</html>
