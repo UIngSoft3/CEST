@@ -11,16 +11,22 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script type="text/javascript" src="scripts.js">
-</script>
-=======
-=======
 
->>>>>>> backup
+
 <script src="scripts.js"></script>
->>>>>>> backup
+<script>
+	function existeExtintor(){
+		$.post( "/existeExtintor",
+				{id: $('#id').val()},
+				function( existe ) {
+					if(existe == true){
+						alert('El Extintor con Id: '+$('#id').val()+' ya esxiste.');
+						$('#id').val('');
+					}
+				}
+		);
+	}
+</script>
 
 <title>Registro de elementos - CEST</title>
 </head>
@@ -42,12 +48,12 @@ $.get("/navBar", function(data){
 				<div class="row">
 					<div class="col-md-4">
 						<label>ID</label>
-						<input th:field="*{idelemento}" id="id" name="id" type="text" class="form-control"  required maxlength="5" pattern="\d+" title="INGRESA VALOR NUMÉRICO, MAXIMO 5">
+						<input th:field="*{idelemento}" id="id" name="id" type="text" class="form-control"  onchange="existeExtintor();" maxlength="5" pattern="\d+" title="INGRESA VALOR NUMÉRICO, MAXIMO 5">
 					</div>
 					
 					<div class="col-md-4">
 						<label>Cédula de encargado</label>
-						<input id="cedulaencargado" name="cedulaencargado" type="text" class="form-control"  required maxlength="10" pattern="\d+" title="lA CÉDULA DEBE SER NUMÉRICA">
+						<input id="cedulaencargado" name="cedulaencargado" type="text" class="form-control"  onblur="ValidarCedula();" required maxlength="10" pattern="\d+" title="lA CÉDULA DEBE SER NUMÉRICA">
 					</div>
 					
 					<div class="col-md-4">
@@ -133,7 +139,7 @@ $.get("/navBar", function(data){
 				<div class="row">
 					<div class="col-md-4">
 						<label>Sede</label> <br>
-						<select id="sede" class="form-control" name="sede" style="width: 100%" onchange="ObtenerBloques();">
+						<select id="sede" class="form-control" name="sede" style="width: 100%" onchange="ObtenerBloques();" required title="SELECCIONA UNA SEDE">
 						   	<option value="">Seleccione</option>
 						   	<th:block th:each="sede:${sedes}">
 						   		<option th:text="${sede.nombre}"></option>	
@@ -143,14 +149,14 @@ $.get("/navBar", function(data){
 					
 					<div class="col-md-4">
 						<label>Bloque</label> <br>
-						<select id="bloque" class="form-control" name="bloque" style="width: 100%" onchange="ObtenerPisos();">
+						<select id="bloque" class="form-control" name="bloque" style="width: 100%" onchange="ObtenerPisos();" required title="SELECCIONA UN BLOQUE">
 						   	<option value="">Seleccione</option>   	
 						</select>						
 					</div>
 					
 					<div class="col-md-4">
 						<label>Piso</label> <br>
-						<select id="piso" class="form-control" name="piso" style="width: 100%">
+						<select id="piso" class="form-control" name="piso" style="width: 100%" required title="SELECCIONA UN PISO">
 						   	<option value="">Seleccione</option>   	
 						</select>						
 					</div>					

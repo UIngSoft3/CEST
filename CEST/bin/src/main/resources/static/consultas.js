@@ -31,7 +31,6 @@ function BuscarExt(){
 							'<td text="'+extintor.estado+'">'+extintor.estado+'</td>' +
 							'<td >' +
 							'<button id="'+extintor.elemento.id+'" class="glyphicon glyphicon-pencil btn btn-primary" onclick="enviar(this.id);"></button>' +
-							'<button class="glyphicon glyphicon-trash btn btn-danger"></button>' +
 							'</td>' +
 							'</tr></table>';
 							tabla += fila;
@@ -75,7 +74,6 @@ function BuscarUbicacion(){
 							'<td text="'+extintor.estado+'">'+extintor.estado+'</td>' +
 							'<td >' +
 							'<button id="'+extintor.elemento.id+'" class="glyphicon glyphicon-pencil btn btn-primary" onclick="enviar(this.id);"></button>' +
-							'<button class="glyphicon glyphicon-trash btn btn-danger"></button>' +
 							'</td>' +
 							'</tr></table>';
 							tabla += fila;
@@ -85,6 +83,7 @@ function BuscarUbicacion(){
 			}
 	);
 }
+
 
 function LimpiarFiltros(){
 	$('#id').val('');
