@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Registrar Encargado</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Registrar Encargado</h1>
+			<p align="center" style="color:white">
+			En este espacio podrás registrar un encargado que es el responsable de algún elemento.
+			<br>
+			</p>
+		</div>
+
+		<div class="container">
+			<h2>Por favor llene todos los campos</h2>
+			<form class="form-signin" action="/registrarEncargado" method="post">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="row">
+								<label>Cédula</label>
+								<input id="cedula" name="cedula" class="form-control" required maxlength="10" minlength="8"  title="Solo Número"/>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-4">
+						<div class="row">
+							<label>Nombre</label>
+							<input id="nombre" name="nombre" class="form-control"/ required pattern="[A-Za-z ]*" title="Solo Letras">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-5"></div>
+					<div class="col-md-2">
+						<br>
+						<button type="submit" class="btn btn-primary btn-block">Guardar</button>
+					</div>
+					<div class="col-md-5"></div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

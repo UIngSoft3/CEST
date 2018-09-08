@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<script>
+	function enviar(tipo){
+		location.href='/modificarFichaTecnica?tipo='+tipo;
+	}
+	
+	function eliminar(tipo){
+		$.post( "/eliminarFichaTecnica",
+				{tipo: tipo},
+				function( success ) {
+					if(success == true){
+						alert('La Ficha técnica '+tipo+' se ha eliminado correctamente');
+						location.href='/consultarFichaTecnica';
+					}
+				}
+		);
+		
+	}
+</script> 
+<title>Ficha Tecnica  - CEST</title>
+
+</head>
+
+
+
+<nav id="menu"></nav>
+
+<script>
+$.get("/navBar", function(data){
+    $("#menu").replaceWith(data);
+});
+</script>
+
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color: white">Ficha Tecnica</h1>
+		</div>
+
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	<div class="container">
+   			<div class="form-group">
+   				<table id="fichastecnicas" class="table table-bordered table-striped">
+   					<tr>
+    					<td><label>Tipo</label></td>
+   						<td><label>Componentes</label></td>
+						<td><label>Descripción</label></td>
+						
+					</tr>
+					
+					<th:block th:each="fichatecnica:${fichastecnicas}">
+					
+					      <tr>
+					         <td th:text="${fichatecnica.tipo}"> </td>
+					         <td th:text="${fichatecnica.componentes}"></td>
+					         <td th:text="${fichatecnica.descripcion}"></td>
+					       			         
+					   
+					         <td>
+					         	<label>
+					         		<button th:id="${fichatecnica.tipo}" onclick="enviar(this.id);"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></button>
+					         		<button th:id="${fichatecnica.tipo}" onclick="eliminar(this.id);"  class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></button>
+					         		
+					         	</label>
+					         </td>
+					      </tr>
+
+					</th:block>
+		        </table>
+   			</div>
+   			<div class="col-md-5"></div>
+   			
+   			<div class="col-md-5"> <a href='/registrarFichaTecnica'> <span class="glyphicon glyphicon-plus btn btn-primary"> </span></a> </div>
+	</div>
+</body>
+</html>

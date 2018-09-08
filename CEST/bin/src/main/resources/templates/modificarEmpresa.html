@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<script>
+	function obtenerId(){
+		var nit = document.getElementById('nit').value;
+		//location.href='/actualizarExtintor?id='+id;
+	}
+</script>
+
+<title>CEST - Empresas</title>
+
+</head>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">Modificar Empresa</h1>
+		</div>
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	</div>
+	<div class="container" style="text-align:center;">
+		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
+				<form action="/modificarEmpresa" th:object="${empresa}" method="post">
+				  	<div>
+    					<div>
+    						Nit: <input type="text" id="nit" name="nit" required th:value="${empresa.nit} "/>
+    					</div>
+
+    					<div>
+    						Direccion: <input type="text" id="direccion" name="direccion" required th:value="${empresa.direccion}"/>
+    					</div>
+    					<div>
+    						Nombre: <input type="text" id="nombre" name="nombre" required th:value="${empresa.nombre}"/>
+    					</div>
+    					<div>
+    						Telefono: <input type="text" id="telefono" name="telefono" required th:value="${empresa.telefono}"/>
+    					</div>
+   					</div>
+   					<div></div>
+   					<a href='/crudEmpresa'> <span class="glyphicon glyphicon-arrow-left btn btn-danger"> </span></a>
+				 	 <input class="btn btn-lg btn-primary"  type="submit" value="Modificar">
+				 	 
+				</form> 
+				  
+	    		<div class="col-md-5"></div>
+	</div>
+</body>
+</html>

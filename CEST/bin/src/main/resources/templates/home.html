@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="utf-8">
 
@@ -13,19 +13,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="pnotify.custom.css">
+
 <script src="pnotify.custom.js"></script>
 
 <script src="scripts.js"></script>
 
 
 <title>CEST - Home</title>
+
 </head>
+
 <nav id="menu"></nav>
+
 <script>
 $.get("/navBar", function(data){
     $("#menu").replaceWith(data);
 });
 </script>
+
 <body>
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron" style="background: rgb(13,67,113)">
@@ -36,13 +41,24 @@ $.get("/navBar", function(data){
 			además podrás dar reporte sobre el estado en el que se encuentre alguno de estos elementos.
 			</p>
 		</div>
-		<p align="center">¿Qué desea gestionar?</p>
-		<p align="center">
-			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=extintor&nombresede&nombrebloque&nombrepiso&idelemento'">Extintor</button>
-			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=botiquin&nnombresede&nombrebloque&nombrepiso&idelemento'">Botiquín</button>
-			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=camilla&nombresede&nombrebloque&nombrepiso&idelemento'">Camilla</button>
-
-		</p>
+		<p align="center" ><font size="6">¿Qué desea gestionar?</font></p>
+		
+		<div class="row">
+			<p align="center">
+				<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=extintor'">Extintor</button>
+				<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=botiquin'">Botiquín</button>
+				<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consulta?tipo=camilla'">Camilla</button>
+			</p>
+		</div>
+		<div>
+			<p align="center">
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/registrarEncargado'">Registrar Encargado</button>
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/registrarContrato'">Registrar Contrato</button>
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/registrarEmpresa'">Registrar Empresa</button>
+			<button type="button" class="btn btn-lg btn-primary" onclick="location.href='/consultarFichaTecnica'">Registrar Ficha Tecnica</button>
+			</p>
+		</div>
+		
 	</div>
 </body>
 </html>
