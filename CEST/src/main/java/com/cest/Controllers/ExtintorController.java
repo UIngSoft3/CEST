@@ -84,9 +84,11 @@ public class ExtintorController {
 		Elemento elemento = BuscarElemento(extintor.getIdelemento());
 		if (elemento != null) {
 			extintor.setElemento(elemento);
+			System.out.println("Encontro elemento");
 		}else {
 			elemento = registrarElemento(extintor.getIdelemento(), nombresede, letrabloque, numeropiso, cedulaencargado, numerocontrato);
 			extintor.setElemento(elemento);
+			System.out.println("elemento nuevo");
 		}
 		String[] fechaRecarga = fecharecarga.split("-");
 		Fichatecnica fichatecnica = BuscarFichatecnica(tipo);
@@ -117,6 +119,7 @@ public class ExtintorController {
 		for (Elemento e : elementoDao.findAll()) {
 			if (e.getId() == idelemento) {
 				elemento = e;
+				System.out.println("retornando elemento lleno");
 			}
 		}
 		return elemento;
