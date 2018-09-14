@@ -60,7 +60,6 @@ public class ExtintorController {
 	private PisoDAO pisoDao;
 	
 
-
 	/*
 	 * Visualiza pagina index
 	 */
