@@ -87,17 +87,10 @@ public class ExtintorController {
 			extintor.setElemento(elemento);
 			System.out.println("Encontro elemento");
 		}else {
-<<<<<<< HEAD
-			System.out.println("elemento nuevo");
-			elemento = registrarElemento(extintor.getIdelemento(), nombresede, letrabloque, numeropiso, cedulaencargado, numerocontrato);
-			extintor.setElemento(elemento);
-			
-=======
 			System.out.println("No se encontro el elemento. Se registrara");
 			elemento = registrarElemento(extintor.getIdelemento(), nombresede, letrabloque, numeropiso, cedulaencargado, numerocontrato);
 			extintor.setElemento(elemento);
 			System.out.println("El elemento de creo correctamente");
->>>>>>> 812c06b31c149e723e8b0b8ea65b9f803b5a6463
 		}
 		String[] fechaRecarga = fecharecarga.split("-");
 		Fichatecnica fichatecnica = BuscarFichatecnica(tipo);
