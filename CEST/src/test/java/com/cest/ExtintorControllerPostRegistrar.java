@@ -44,7 +44,7 @@ public class ExtintorControllerPostRegistrar {
 												"A", 
 												"2", 
 												"ABC", 
-												"11-03-2018");
+												"2018-03-11");
 		assertNotNull(model);
 		//assertEquals(new ModelAndView("redirect:/consulta?tipo=extintor"), model);
 	}
