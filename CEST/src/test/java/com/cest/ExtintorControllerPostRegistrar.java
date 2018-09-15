@@ -1,7 +1,6 @@
 package com.cest;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +10,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.servlet.ModelAndView;
 import com.cest.Controllers.ExtintorController;
-import com.cest.Models.Elemento;
 import com.cest.Models.Extintor;
 
 
