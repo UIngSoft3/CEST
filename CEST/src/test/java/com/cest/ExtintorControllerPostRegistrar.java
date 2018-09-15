@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.servlet.ModelAndView;
 import com.cest.Controllers.ExtintorController;
@@ -24,6 +25,7 @@ public class ExtintorControllerPostRegistrar {
 	Extintor extintor = new Extintor();
 	
 	@Before
+	@Sql()
 	public void setup() {		
 		extintor.setIdelemento(1011);
 		extintor.setTamanio("15 Libras");
