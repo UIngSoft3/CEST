@@ -235,8 +235,10 @@ public class ExtintorController {
 	 * Registra un elemento en la base de datos
 	 */
 	public Elemento registrarElemento(int id, String nombresede
-			, String letrabloque, String numeropiso
-			, String cedulaencargado, String numerocontrato)
+									, String letrabloque
+									, String numeropiso
+									, String cedulaencargado
+									, String numerocontrato)
 	{
 		Encargado encargado = null;
 		for (Encargado e : encargadoDao.findAll()) {
