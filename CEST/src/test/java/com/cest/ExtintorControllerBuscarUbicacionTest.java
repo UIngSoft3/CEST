@@ -29,6 +29,7 @@ public class ExtintorControllerBuscarUbicacionTest {
 	/*
 	 * Prueba para buscar extintores en una ubicación 
 	 * donde SI hay extintores y los 3 parámetros son especificados 
+	 * ll
 	 */
 	@Test
 	public void ExisteExtintorEnUbicacionCompletaTest(){
