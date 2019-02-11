@@ -1,5 +1,6 @@
 package com.cest.Controllers;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -85,12 +86,9 @@ public class ExtintorController {
 		
 		if (elemento != null) {
 			extintor.setElemento(elemento);
-			System.out.println("Encontro elemento");
 		}else {
-			System.out.println("No se encontro el elemento. Se registrara");
 			elemento = registrarElemento(extintor.getIdelemento(), nombresede, letrabloque, numeropiso, cedulaencargado, numerocontrato);
 			extintor.setElemento(elemento);
-			System.out.println("El elemento de creo correctamente");
 		}
 		String[] fechaRecarga = fecharecarga.split("-");
 		Fichatecnica fichatecnica = BuscarFichatecnica(tipo);
@@ -167,7 +165,7 @@ public class ExtintorController {
 			, @RequestParam("sede") String nombresede
 			, @RequestParam("bloque") String letrabloque
 			, @RequestParam("piso") String numeropiso			
-			)
+			) 
 	{
 		Extintor extintor = null;
 		for (Extintor extintorr : extintorDao.findAll()) {
@@ -243,38 +241,31 @@ public class ExtintorController {
 		Encargado encargado = null;
 		for (Encargado e : encargadoDao.findAll()) {
 			if (e.getCedula() == Integer.valueOf(cedulaencargado)) {
-				System.out.println("Encontro encargado");
 				encargado = e;
 			}
 		}
 		Contrato contrato = null;
 		for (Contrato c : contratoDao.findAll()) {
-			
 			if (c.getNumero() == Integer.valueOf(numerocontrato)) {
 				contrato = c;
-				System.out.println("Encontro contrato");
 			}
 		}
 		Sede sede = null;
 		for (Sede s : sedeDao.findAll()) {
 			if (s.getNombre().equals(nombresede)) {
-				System.out.println("Encontro sede");
 				sede = s;
 			}
 		}
 		Bloque bloque = null;
 		for (Bloque b : bloqueDao.findAll()) {
-			System.out.println("analizando: "+sede+" - "+b.getSede());
 			if (b.getBloquePk().getLetra().equals(letrabloque) && b.getSede().getNombre().equals(sede.getNombre())) {
 				bloque = b;
-				System.out.println("Encontro bloque");
 			}
 		}
 		Piso piso = null;
 		for (Piso p : pisoDao.findAll()) {
 			if (p.getPisoPk().getNumero() == Integer.valueOf(numeropiso) && p.getBloque().getNombre().equals(bloque.getNombre())) {
 				piso = p;
-				System.out.println("Encontro piso");
 			}
 		}
 		Elemento elemento = null;
