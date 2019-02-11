@@ -187,9 +187,8 @@ public class ReporteController {
 				reporte.setEstado("Revisado");
 				reporte.setDescripcion(descripcion);
 				reporte.setArgumento(argumentacion);
-				reporteDao.save(reporte);
-				
-				return new ModelAndView("redirect:/consultarReporte");
+				reporteDao.save(reporte);				
+				return new ModelAndView("redirect:/modificarReporte?id="+id);
 			}
 		}
 		

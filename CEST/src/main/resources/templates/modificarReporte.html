@@ -14,10 +14,9 @@
 
 <script src="scripts.js"></script>
 
-<script>
-	function obtenerId(){
-		var id = document.getElementById('id').value;
-		//location.href='/actualizarExtintor?id='+id;
+<script>	
+	function enviar(id){
+		location.href='/consultarReporteId?id='+id;
 	}
 </script>
 
@@ -42,7 +41,6 @@ $.get("/navBar", function(data){
 	 </div>
 	 <br>
 
-	</div>
 	<div class="container" style="text-align:center;">
 	
 		<!-- Tabla que muestra la información de la tabla contrato de la base de datos -->
@@ -79,7 +77,7 @@ $.get("/navBar", function(data){
     					</div>
     					
     				</div>
-   					<a href='/consultarReporte'> <span class="glyphicon glyphicon-arrow-left btn btn-danger"> </span></a>
+   					<a href='/consultarReporteId?id=-1'> <span class="glyphicon glyphicon-arrow-left btn btn-danger"> </span></a>
 				 	 <input class="btn btn-lg btn-primary"  type="submit" value="Modificar">
 				 	 
 				</form> 
