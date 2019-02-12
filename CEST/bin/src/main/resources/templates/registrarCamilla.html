@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Registrar Camilla</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+<script>
+	function existeCamilla(){
+		$.post( "/existeCamilla",
+				{id: $('#id').val()},
+				function( existe ) {
+					if(existe == true){
+						alert('La camilla con Id: '+$('#id').val()+' ya esxiste.');
+						$('#id').val('');
+					}
+				}
+		);
+	}
+</script>
+
+<title>Registrar Camilla - CEST</title>
+</head>
+
+<nav id="menu"></nav>
+<script>
+$.get("/navBar", function(data){
+    $("#menu").replaceWith(data);
+});
+</script>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Registrar Camilla</h1>
+			<p align="center" style="color:white"> 
+			En este espacio podrás registrar la información relevante de las camillas.
+			</p>
+		</div>
+		
+		<div class="container">			
+			<form class="form-signin" action="#" th:action="@{/registrarCamilla}" th:object="${camilla}" th:method="post">
+				<h2>Por favor llene todos los campos</h2>
+				<div class="row">
+					<div class="col-md-4">
+						<label>Id</label>
+						<input th:field="*{idelemento}" type="text" id="id" class="form-control" onchange="existeCamilla();" required pattern="\d+" title="INGRESA VALOR NUMÉRICO">
+					</div>
+					<div class="col-md-4">
+						<label>Tipo</label>
+						<select th:field="*{tipocamilla}" id="tipo" name="tipo" class="form-control"  style="width: 100%" required title="SELECCIONA EL TAMAÑO DEL EXTINTOR">
+						   	<option value="">Seleccione</option>
+						   	<option value="Lona">Lona</option>
+						   	<option value="Miller">Miller</option>
+						</select>
+					</div>
+					<div class="col-md-4">
+						<label>Cédula de encargado</label>
+						<input id="cedulaencargado" name="cedulaencargado" type="text" class="form-control"  onblur="ValidarCedula();" required maxlength="10" pattern="\d+" title="lA CÉDULA DEBE SER NUMÉRICA">
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label><br>Ubicacion: </label>						
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4">
+						<label>Sede</label> <br>
+						<select id="sede" class="form-control" name="sede" style="width: 100%" onchange="ObtenerBloques();" required title="SELECCIONA UNA SEDE">
+						   	<option value="">Seleccione</option>
+						   	<th:block th:each="sede:${sedes}">
+						   		<option th:text="${sede.nombre}"></option>	
+						   	</th:block>		   	
+						</select>						
+					</div>				
+					
+					<div class="col-md-4">
+						<label>Bloque</label> <br>
+						<select id="bloque" class="form-control" name="bloque" style="width: 100%" onchange="ObtenerPisos();" required title="SELECCIONA UN BLOQUE">
+						   	<option value="">Seleccione</option>   	
+						</select>						
+					</div>
+					
+					<div class="col-md-4">
+						<label>Piso</label> <br>
+						<select id="piso" class="form-control" name="piso" style="width: 100%" required title="SELECCIONA UN PISO">
+						   	<option value="">Seleccione</option>   	
+						</select>						
+					</div>					
+				</div>
+				
+				<div class="row">
+					<div class="col-md-5"></div>
+					<div class="col-md-2">
+						<br>
+						<button type="submit" class="btn btn-primary btn-block">Registrar contrato</button>
+					</div>
+					<div class="col-md-5"></div>
+				</div>	
+			</form>
+		</div>
+	</div>
+</body>
+</html>

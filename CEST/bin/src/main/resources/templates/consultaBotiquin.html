@@ -12,10 +12,19 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="pnotify.custom.css">
+<script src="pnotify.custom.js"></script>
+
 <script src="scripts.js"></script>
 
 <title>CEST - Botiquines</title>
 </head>
+<nav id="menu"></nav>
+<script>
+$.get("/navBar", function(data){
+    $("#menu").replaceWith(data);
+});
+</script>
 <body>
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron">

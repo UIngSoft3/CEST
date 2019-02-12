@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+<script>
+	function enviar(nit){
+		location.href='/modificarEmpresa?nit='+nit;
+	}
+	
+	function eliminar(nit){
+		
+		location.href='/crudEmpresaE?nit='+nit;
+	}
+</script> 
+<title>CEST - Empresas</title>
+
+</head>
+
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<h1 align="center">CRUD Empresa</h1>
+		</div>
+
+		<div class="col-md-1"></div>
+	 </div>
+	 <br>
+
+	<div class="container">
+   			<div class="form-group">
+   				<table id="empresas" class="table table-bordered table-striped">
+   					<tr>
+    					<td><label>NIT</label></td>
+   						<td><label>Direccion</label></td>
+						<td><label>Nombre</label></td>
+						<td><label>Telefono</label></td>
+						<td><label>Accion</label></td>
+					</tr>
+					
+					<th:block th:each="empresa:${empresas}">
+					
+					      <tr>
+					         <td th:text="${empresa.nit}"> </td>
+					         <td th:text="${empresa.direccion}"></td>
+					         <td th:text="${empresa.nombre}"></td>
+					         <td th:text="${empresa.telefono}"></td>					         
+					   
+					         <td>
+					         	<label>
+					         		<button th:onclick="'javascript:enviar(' + ${empresa.nit} + ')'"  class="btn btn-success"> <span class="glyphicon glyphicon-pencil"></span></button>
+					         		<button th:onclick="'javascript:eliminar(' + ${empresa.nit} + ')'"  class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></button>
+					         		
+					         	</label>
+					         </td>
+					      </tr>
+
+					</th:block>
+		        </table>
+   			</div>
+   			<div class="col-md-5"></div>
+   			
+   			<div class="col-md-5"> <a href='/registrarEmpresa'> <span class="glyphicon glyphicon-plus btn btn-success"> </span></a> </div>
+	</div>
+</body>
+</html>

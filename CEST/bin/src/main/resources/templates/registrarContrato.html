@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="scripts.js"></script>
+
+
+<title>Registrar contrato - CEST</title>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron" style="background: rgb(13,67,113)">
+			<h1 align="center" style="color:white">Registrar contrato</h1>
+			<p align="center" style="color:white"> 
+			En este espacio podrás registrar la información relevante de los contratos.
+			</p>
+		</div>
+		
+		<div class="container">			
+			<form class="form-signin" action="/registrarContrato" method="post">
+				<h2>Por favor llene todos los campos</h2>
+				<div class="row">
+					<div class="col-md-4">
+						<label>Número de contrato</label>
+						<input type="text" id="numero" class="form-control" required pattern="\d+" title="INGRESA VALOR NUMÉRICO">
+					</div>
+					<div class="col-md-4">
+						<label>NIT empresa</label>
+						<input type="text" id="nitempresa" class="form-control" required pattern="\d+" title="INGRESA VALOR NUMÉRICO">
+					</div>
+					<div class="col-md-4">
+						<label>Fecha</label>
+						<input type="date" id="fecha" class="form-control" required pattern="\d+" title="INGRESA VALOR NUMÉRICO">
+					</div>					
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4">
+						<label>Valor</label>
+						<input type="text" id="valor" class="form-control" required pattern="\d+" title="INGRESA VALOR NUMÉRICO">
+					</div>
+					<div class="col-md-4">
+						<label>Descripción</label>
+						<input type="text" id="descripcion" class="form-control" required title="ESTE CAMPO NO DEBE ESTAR VACÍO">
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-md-5"></div>
+					<div class="col-md-2">
+						<br>
+						<button type="submit" class="btn btn-primary btn-block">Registrar contrato</button>
+					</div>
+					<div class="col-md-5"></div>
+				</div>	
+			</form>
+		</div>
+	</div>
+</body>
+</html>
