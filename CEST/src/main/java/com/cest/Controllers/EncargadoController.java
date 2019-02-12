@@ -32,7 +32,7 @@ public class EncargadoController {
 		encargado.setNombre(nombre);
 		
 		encargadoDao.save(encargado);
-		return new ModelAndView("redirect:/registrarExtintor");
+		return new ModelAndView("redirect:/registrarEncargado");
 	}
 	
 	@PostMapping(value="/buscarEncargado")

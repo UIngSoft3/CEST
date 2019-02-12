@@ -27,7 +27,7 @@ public class ContratoController {
 	
 	@PostMapping(value="/registrarContrato")
 	public ModelAndView postRegistrarContrato(@RequestParam String numero
-			,@RequestParam String nitemepresa
+			,@RequestParam String nitempresa
 			,@RequestParam String fecha
 			,@RequestParam String valor
 			,@RequestParam String descripcion)
@@ -41,8 +41,10 @@ public class ContratoController {
 					,Integer.valueOf(fechaa[1])
 					,Integer.valueOf(fechaa[2])));
 			
+			contratoDao.save(contrato);
+			
 		}
-		return new ModelAndView("redirect:/registrarExtintor");
+		return new ModelAndView("redirect:/home");
 	}
 	
 	public Contrato buscarContrato(int numero) {

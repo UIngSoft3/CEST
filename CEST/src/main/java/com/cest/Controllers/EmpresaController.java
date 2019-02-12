@@ -82,7 +82,7 @@ public class EmpresaController {
 	@PostMapping(value="/registrarEmpresa")
 	public ModelAndView postRegistrarEmpresa(Model modelo, @ModelAttribute("empresa") Empresa empresa){
 		empresaDao.save(empresa);
-		return new ModelAndView("redirect:/home");
+		return new ModelAndView("redirect:/registrarEmpresa");
 	}
 	
 	@GetMapping(value = "/crudEmpresaE")

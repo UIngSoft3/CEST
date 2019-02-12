@@ -1,5 +1,6 @@
 package com.cest.Controllers;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,7 +61,6 @@ public class ExtintorController {
 	private PisoDAO pisoDao;
 	
 
-
 	/*
 	 * Visualiza pagina index
 	 */
@@ -83,6 +83,7 @@ public class ExtintorController {
 			, @RequestParam("fechaultimarecarga") String fecharecarga)
 	{
 		Elemento elemento = BuscarElemento(extintor.getIdelemento());
+		
 		if (elemento != null) {
 			extintor.setElemento(elemento);
 		}else {
@@ -164,7 +165,7 @@ public class ExtintorController {
 			, @RequestParam("sede") String nombresede
 			, @RequestParam("bloque") String letrabloque
 			, @RequestParam("piso") String numeropiso			
-			)
+			) 
 	{
 		Extintor extintor = null;
 		for (Extintor extintorr : extintorDao.findAll()) {
@@ -232,8 +233,10 @@ public class ExtintorController {
 	 * Registra un elemento en la base de datos
 	 */
 	public Elemento registrarElemento(int id, String nombresede
-			, String letrabloque, String numeropiso
-			, String cedulaencargado, String numerocontrato)
+									, String letrabloque
+									, String numeropiso
+									, String cedulaencargado
+									, String numerocontrato)
 	{
 		Encargado encargado = null;
 		for (Encargado e : encargadoDao.findAll()) {
@@ -255,13 +258,13 @@ public class ExtintorController {
 		}
 		Bloque bloque = null;
 		for (Bloque b : bloqueDao.findAll()) {
-			if (b.getBloquePk().getLetra().equals(letrabloque) && b.getSede().equals(sede)) {
+			if (b.getBloquePk().getLetra().equals(letrabloque) && b.getSede().getNombre().equals(sede.getNombre())) {
 				bloque = b;
 			}
 		}
 		Piso piso = null;
 		for (Piso p : pisoDao.findAll()) {
-			if (p.getPisoPk().getNumero() == Integer.valueOf(numeropiso) && p.getBloque().equals(bloque)) {
+			if (p.getPisoPk().getNumero() == Integer.valueOf(numeropiso) && p.getBloque().getNombre().equals(bloque.getNombre())) {
 				piso = p;
 			}
 		}
@@ -297,7 +300,8 @@ public class ExtintorController {
 
 	@PostMapping(value = "/buscarUbicacion")
 	@ResponseBody
-	public List<Extintor> buscarUbicacion(@RequestParam("sede") String sede, @RequestParam("bloque") String bloque, @RequestParam("piso") String piso){
+	public List<Extintor> buscarUbicacion(@RequestParam("sede") String sede, @RequestParam("bloque") String bloque,
+			@RequestParam("piso") String piso){
 		List<Extintor> extintores = null;
 		if (!sede.equals("")) {
 			if (!bloque.equals("Seleccione") && !bloque.equals("")) {
