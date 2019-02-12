@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cest.Controllers.ExtintorController;
 import com.cest.Models.Extintor;
 
-import net.bytebuddy.asm.Advice.Thrown;
 
 /**
  * clase para probar el metodo postRegistrarExtintor
@@ -23,12 +22,13 @@ import net.bytebuddy.asm.Advice.Thrown;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ExtintorControllerPostRegistrar {
-	
+
 	@Autowired
 	private ExtintorController extintorCtrl;
-	
+
 	Extintor extintor = new Extintor();
 	
+<<<<<<< HEAD
 
 	/**
 	 * prueba unitaria para registrar un extintor normalmente
@@ -39,11 +39,17 @@ public class ExtintorControllerPostRegistrar {
 		
 
 	
+=======
+>>>>>>> 577b1cadfad0dcb52e9b617c753df700a4b013b2
 	// antes de que se ejeute cada prueba 
 	// se realiza esta comfiguracion
 	@Before
 	@Sql()
+<<<<<<< HEAD
 	public void setup() {
+=======
+	public void setup() {		
+>>>>>>> 577b1cadfad0dcb52e9b617c753df700a4b013b2
 		extintor.setIdelemento(9989);
 		extintor.setTamanio("15 Libras");
 		extintor.setCaducidadanios("2");
@@ -75,6 +81,16 @@ public class ExtintorControllerPostRegistrar {
 		
 		assertNotNull(model);		
 	}
+
+	@Test
+	@Sql("cestlt.sql")
+	public void RegistrarExtintorTest() {
+
+		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "12345678", "999", "Central", "A",
+				"2", "ABC", "2018-03-11");
+		assertNotNull(model);
+		// assertEquals(new ModelAndView("redirect:/consulta?tipo=extintor"), model);
+	}
 	
 	
 	/**
@@ -96,5 +112,5 @@ public class ExtintorControllerPostRegistrar {
 		
 		assertNotNull(model);
 	}
-	
+
 }
