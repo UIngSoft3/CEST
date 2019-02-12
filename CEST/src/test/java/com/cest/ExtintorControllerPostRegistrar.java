@@ -29,22 +29,21 @@ public class ExtintorControllerPostRegistrar {
 	
 	Extintor extintor = new Extintor();
 	
-<<<<<<< HEAD
+
 	/**
 	 * prueba unitaria para registrar un extintor normalmente
 	 */
 	@Test
 	@Sql("cestlt.sql")
-	public void RegistrarExtintorTest() {
+	public void RegistrarExtintorTest() {}
 		
-=======
+
 	
 	// antes de que se ejeute cada prueba 
 	// se realiza esta comfiguracion
 	@Before
 	@Sql()
-	public void setup() {		
->>>>>>> 71bc1aa671f113442e1b1654ba28e6dbee91c835
+	public void setup() {
 		extintor.setIdelemento(9989);
 		extintor.setTamanio("15 Libras");
 		extintor.setCaducidadanios("2");
