@@ -62,8 +62,7 @@ CREATE TABLE contrato (
   empresa_nit int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO contrato VALUES
-(777, 'cambio de valvulas', '2018-12-24', 100000, 001);
+
  
 CREATE TABLE elemento (
   id int(11) NOT NULL,
@@ -83,16 +82,14 @@ CREATE TABLE empresa (
   telefono int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
  
-INSERT INTO empresa VALUES
-(001,'Cra 19 # 31', 'PSI extintores', 8809424);
+
  
 CREATE TABLE encargado (
   cedula int(11) NOT NULL,
   nombre varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
  
-INSERT INTO encargado VALUES
-(9876147, 'Juan Gomez');
+
  
 CREATE TABLE extintor (
   idelemento int(11) NOT NULL,
@@ -221,7 +218,8 @@ INSERT INTO bloque VALUES
 
 INSERT INTO contrato VALUES
 (999, 'Recarga de 5 extintores', '2018-05-16', 500000, 12),
-(888, 'Recarga Extintores', '2018-05-23', 400000, 11);
+(888, 'Recarga Extintores', '2018-05-23', 400000, 11),
+(777, 'cambio de valvulas', '2018-12-24', 100000, 001);
 
 INSERT INTO elemento VALUES
 (1606, 999, 1234, 'C', 1),
@@ -237,13 +235,17 @@ INSERT INTO elemento VALUES
 INSERT INTO empresa VALUES
 (12, 'Calle 61 # 11 - 29', 'Apaga Fuegos', 45083),
 (11, 'Carrera 73A # 2 - 45', 'Fuego y Familia', 23622),
-(10, 'Km 22 via Magdalena', 'Bomberman', 88400);
+(10, 'Km 22 via Magdalena', 'Bomberman', 88400),
+(001,'Cra 19 # 31', 'PSI extintores', 8809424);
+
 
 INSERT INTO encargado VALUES
 (1234, 'Pepito Perez'),
-(9876, 'Juan Gomez'),
+(9876, 'Juana Gomez'),
 (12345678, 'Anita Velez'),
-(10279174, 'Jose Fernando');
+(10279174, 'Jose Fernando'),
+(9876147, 'Juan Gomez');
+
 
 INSERT INTO extintor VALUES
 (1606, '3', 'Activo', '2018-05-16', '2021-05-16', '10 Libras', 1606, 'ABC'),

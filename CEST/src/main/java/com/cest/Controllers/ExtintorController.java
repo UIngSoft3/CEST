@@ -66,7 +66,6 @@ public class ExtintorController {
 	/**
 	 * Método que por la funcion GET muestra la pagina
 	 * de registrar extintor
-	 * 
 	 * @param modelo
 	 * @return
 	 */
