@@ -14,85 +14,85 @@ import com.cest.Models.Extintor;
 
 
 /**
- * clase para probar el metodo postRegistrarExtintor
- * con tres pruebas unitarias 
+ * clase para realizar pruebas unitarias 
+ * del metodo postRegistrarExtintor
  * @author ARES
  *
  */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ExtintorControllerPostRegistrar {
 
+	private Extintor extintor;
+	
 	@Autowired
 	private ExtintorController extintorCtrl;
 
-	Extintor extintor = new Extintor();
-	// antes de que se ejeute cada prueba 
-	// se realiza esta comfiguracion
-	@Before
-	@Sql()
-	public void setup() {		
-		extintor.setIdelemento(9989);
-		extintor.setTamanio("15 Libras");
-		extintor.setCaducidadanios("2");
-		extintor.setEstado("Activo");
-		
-		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "12345678","999", 
-																"Central", "A", "2", "ABC",	"2018-03-11");
-		
-		assertNotNull(model);
-	}
+	public ExtintorControllerPostRegistrar() {
+		 this.extintor = new Extintor();
+	}	
 	
 	
 	/**
-	 * prueba unitari para intenar registrar un extintor
-	 * con el nuúmero de contrato no registrado
+	 * prueba para registrar un extintor 
+	 * con un id no registrado en la BD
 	 */
 	@Test
 	@Sql("cestlt.sql")
-	public void ExtintorContratoNoRegistrado() {	
+	public void extintorNoRegistrado() {	
 		
-		extintor.setIdelemento(9986);
+		extintor.setIdelemento(1789);
 		extintor.setTamanio("10 Libras");
-		extintor.setCaducidadanios("3");
+		extintor.setCaducidadanios("2");
 		extintor.setEstado("Activo");
 		
-		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "10279174", "111", 
-																"Central", "D", "1", "CO2", "2018-03-11");
+		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "9876147", "777", 
+																"Central", "A", "1", "ABC", "2018-03-11");
 		
 		
 		assertNotNull(model);		
 	}
+	
 
+	/**
+	 * prueba para registrar un extintor 
+	 * con un id registrado en la BD
+	 */
 	@Test
 	@Sql("cestlt.sql")
-	public void RegistrarExtintorTest() {
+	public void ExtintorRegistrado() {
 
-		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "12345678", "999", "Central", "A",
-				"2", "ABC", "2018-03-11");
-		assertNotNull(model);
-		// assertEquals(new ModelAndView("redirect:/consulta?tipo=extintor"), model);
+		extintor.setIdelemento(1606);
+		extintor.setTamanio("10 Libras");
+		extintor.setCaducidadanios("2");
+		extintor.setEstado("Activo");
+		
+		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "12344541", "999", 
+																"Central", "A", "2", "ABC", "2018-03-11");
+		
+		
+		assertNull(model);	
 	}
 	
 	
 	/**
-	 * prueba unitaria para intenta registrar un extintor 
+	 * prueba para registrar un extintor 
 	 * con un encargado no registrado
-	 * el metodo no registra ingun cambio en la base de datos 
 	 */
 	@Test
 	@Sql("cestlt.sql")
 	public void ExtintorEncargadoNoRegistrado() {	
 		
-		extintor.setIdelemento(9987);
+		extintor.setIdelemento(2431);
 		extintor.setTamanio("15 Libras");
 		extintor.setCaducidadanios("2");
 		extintor.setEstado("Activo");
 		
-		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "12345688", "999", 
-																"Central", "A",	"2", "ABC",	"2018-03-11");
+		ModelAndView model = extintorCtrl.postRegistrarExtintor(null, extintor, null, "10369874", "555", 
+																"Palogrande", "H",	"2", "ABC",	"2018-03-11");
 		
-		assertNotNull(model);
+		assertNull(model);
 	}
 
 }

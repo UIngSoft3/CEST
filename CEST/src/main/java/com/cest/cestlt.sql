@@ -1,60 +1,206 @@
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-09-2018 a las 23:38:23
--- Versión del servidor: 8.0.12
--- Versión de PHP: 7.2.7-0ubuntu0.18.04.2
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+drop table usuario;
+drop table  sede;
+drop table  reporte;
+drop table  piso;
+drop table  fichatecnica;
+drop table  extintor;
+drop table  empresa;
+drop table  encargado;
+drop table  elemento;
+drop table  contrato;
+drop table  botiquin;
+drop table  camilla;
+drop table bloque;
 
+CREATE TABLE bloque (
+  id_sede int(11) NOT NULL,
+  letra varchar(255) NOT NULL,
+  nombre varchar(255) DEFAULT NULL,
+  sede_id int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE botiquin (
+  idelemento int(11) NOT NULL,
+  alcoholantiseptico varchar(255) DEFAULT NULL,
+  algodon varchar(255) DEFAULT NULL,
+  cantidadesparadrapo int(11) NOT NULL,
+  curaestandar varchar(255) DEFAULT NULL,
+  esparadrapo varchar(255) DEFAULT NULL,
+  fechavencimiento date DEFAULT NULL,
+  fechavencimientoesparadrapo date DEFAULT NULL,
+  linterna varchar(255) DEFAULT NULL,
+  numerorecibdo int(11) NOT NULL,
+  parcheocular varchar(255) DEFAULT NULL,
+  pito varchar(255) DEFAULT NULL,
+  saleshidratantes varchar(255) DEFAULT NULL,
+  solucionsalina varchar(255) DEFAULT NULL,
+  solucionyodada varchar(255) DEFAULT NULL,
+  tapabocas varchar(255) DEFAULT NULL,
+  termometro varchar(255) DEFAULT NULL,
+  vendaalgodon varchar(255) DEFAULT NULL,
+  elemento_id int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
 
---
--- Base de datos: `cestlt`
---
-
--- --------------------------------------------------------
-drop table `usuario`;
-drop table  `sede`;
-drop table  `reporte`;
-drop table  `piso`;
-drop table  `fichatecnica`;
-drop table  `extintor`;
-drop table  `empresa`;
-drop table  `encargado`;
-drop table  `elemento`;
-drop table  `contrato`;
-drop table  `botiquin`;
-drop table  `camilla`;
-drop table `bloque`;
-drop table `hibernate_sequence`;
-
-
---
--- Estructura de tabla para la tabla `bloque`
---
-
-CREATE TABLE `bloque` (
-  `id_sede` int(11) NOT NULL,
-  `letra` varchar(255) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `sede_id` int(11) DEFAULT NULL
+ 
+CREATE TABLE camilla (
+  idelemento int(11) NOT NULL,
+  elemento_id int(11) DEFAULT NULL,
+  tipocamilla varchar(255) DEFAULT NULL,
+  encargado int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `bloque`
---
+ 
+ 
+CREATE TABLE contrato (
+  numero int(11) NOT NULL,
+  descripcion varchar(255) DEFAULT NULL,
+  fecha date DEFAULT NULL,
+  valor float NOT NULL,
+  empresa_nit int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `bloque` (`id_sede`, `letra`, `nombre`, `sede_id`) VALUES
+INSERT INTO contrato VALUES
+(777, 'cambio de valvulas', '2018-12-24', 100000, 001);
+ 
+CREATE TABLE elemento (
+  id int(11) NOT NULL,
+  contrato_numero int(11) DEFAULT NULL,
+  encargado_cedula int(11) NOT NULL,
+  piso_letra_bloque varchar(255) NOT NULL,
+  piso_numero int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
+ 
+
+ 
+CREATE TABLE empresa (
+  nit int(11) NOT NULL,
+  direccion varchar(255) DEFAULT NULL,
+  nombre varchar(255) DEFAULT NULL,
+  telefono int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
+INSERT INTO empresa VALUES
+(001,'Cra 19 # 31', 'PSI extintores', 8809424);
+ 
+CREATE TABLE encargado (
+  cedula int(11) NOT NULL,
+  nombre varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
+INSERT INTO encargado VALUES
+(9876147, 'Juan Gomez');
+ 
+CREATE TABLE extintor (
+  idelemento int(11) NOT NULL,
+  caducidadanios varchar(255) NOT NULL,
+  estado varchar(255) DEFAULT NULL,
+  fechaultimarecarga date DEFAULT NULL,
+  fechavencimiento date DEFAULT NULL,
+  tamanio varchar(255) DEFAULT NULL,
+  elemento_id int(11) DEFAULT NULL,
+  fichatecnica_tipo varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+ 
+CREATE TABLE fichatecnica (
+  tipo varchar(255) NOT NULL,
+  descripcion varchar(255) DEFAULT NULL,
+  componentes varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+ 
+CREATE TABLE piso (
+  letra_bloque varchar(255) NOT NULL,
+  numero int(11) NOT NULL,
+  bloque_id_sede int(11) DEFAULT NULL,
+  bloque_letra varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE reporte (
+  id int(11) NOT NULL,
+  argumento varchar(255) DEFAULT NULL,
+  descripcion varchar(255) DEFAULT NULL,
+  estado varchar(255) DEFAULT NULL,
+  fechareporte date DEFAULT NULL,
+  tipoelemento varchar(255) DEFAULT NULL,
+  ubicacion varchar(255) DEFAULT NULL,
+  leido varchar(255) DEFAULT NULL,
+  notificado varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ 
+CREATE TABLE sede (
+  id int(11) NOT NULL,
+  nombre varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE usuario (
+  contrasena varchar(255) NOT NULL,
+  usuario varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+ALTER TABLE bloque
+  ADD PRIMARY KEY (id_sede,letra),
+  ADD KEY FKpnyvsj5fo51dlgkdfe03v5ssd (sede_id);
+
+ALTER TABLE botiquin
+  ADD PRIMARY KEY (idelemento),
+  ADD KEY FKep51xeikcux9pfunrr99yq8dl (elemento_id);
+
+ALTER TABLE camilla
+  ADD PRIMARY KEY (idelemento),
+  ADD KEY FK52b3ny3r05t6itste92e31w9p (elemento_id);
+
+ALTER TABLE contrato
+  ADD PRIMARY KEY (numero),
+  ADD KEY FKpkadjqp9hhdvd1lv468yvh38x (empresa_nit);
+
+ALTER TABLE elemento
+  ADD PRIMARY KEY (id),
+  ADD KEY FKtrv05yd1likvp556qgys95kd1 (contrato_numero),
+  ADD KEY FKehlggjkntopc72xntw4c4332i (encargado_cedula),
+  ADD KEY FKt6vd7xm9ha44shqek6xy71ywd (piso_letra_bloque,piso_numero);
+
+ALTER TABLE empresa
+  ADD PRIMARY KEY (nit);
+
+ALTER TABLE encargado
+  ADD PRIMARY KEY (cedula);
+
+ALTER TABLE extintor
+  ADD PRIMARY KEY (idelemento),
+  ADD KEY FKh7r7s38d421wi02jibl6q8d9f (elemento_id),
+  ADD KEY FKafkv4iwmt8ykwrg0ne5u49ab8 (fichatecnica_tipo);
+
+ALTER TABLE fichatecnica
+  ADD PRIMARY KEY (tipo);
+
+ALTER TABLE piso
+  ADD PRIMARY KEY (letra_bloque,numero),
+  ADD KEY FKbnx8w2pjcsqbtk5ruitlost5l (bloque_id_sede,bloque_letra);
+ 
+ALTER TABLE reporte
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE sede
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE usuario
+  ADD PRIMARY KEY (contrasena);
+COMMIT;
+
+
+
+insert into usuario values ('user','user');
+insert into usuario values ('cest','cest');
+insert into usuario values ('luis','luis');
+
+
+INSERT INTO bloque VALUES
 (1, 'C', 'Edificio Central', 1),
 (1, 'B', 'Edificio Central', 1),
 (1, 'A', 'Edificio Administrativo', 1),
@@ -73,96 +219,11 @@ INSERT INTO `bloque` (`id_sede`, `letra`, `nombre`, `sede_id`) VALUES
 (5, 'F', 'Edificio Ciencias Agropecuarias', 5),
 (5, 'G', 'Edificio Ciencias Agropecuarias', 5);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `botiquin`
---
-
-CREATE TABLE `botiquin` (
-  `idelemento` int(11) NOT NULL,
-  `alcoholantiseptico` varchar(255) DEFAULT NULL,
-  `algodon` varchar(255) DEFAULT NULL,
-  `cantidadesparadrapo` int(11) NOT NULL,
-  `curaestandar` varchar(255) DEFAULT NULL,
-  `esparadrapo` varchar(255) DEFAULT NULL,
-  `fechavencimiento` date DEFAULT NULL,
-  `fechavencimientoesparadrapo` date DEFAULT NULL,
-  `linterna` varchar(255) DEFAULT NULL,
-  `numerorecibdo` int(11) NOT NULL,
-  `parcheocular` varchar(255) DEFAULT NULL,
-  `pito` varchar(255) DEFAULT NULL,
-  `saleshidratantes` varchar(255) DEFAULT NULL,
-  `solucionsalina` varchar(255) DEFAULT NULL,
-  `solucionyodada` varchar(255) DEFAULT NULL,
-  `tapabocas` varchar(255) DEFAULT NULL,
-  `termometro` varchar(255) DEFAULT NULL,
-  `vendaalgodon` varchar(255) DEFAULT NULL,
-  `elemento_id` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `camilla`
---
-
-CREATE TABLE `camilla` (
-  `idelemento` int(11) NOT NULL,
-  `elemento_id` int(11) DEFAULT NULL,
-  `tipocamilla` varchar(255) DEFAULT NULL,
-  `encargado` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `camilla`
---
-
-INSERT INTO `camilla` (`idelemento`, `elemento_id`, `tipocamilla`, `encargado`) VALUES
-(2000, 2000, 'Lona', 0),
-(1010, 1010, 'Miller', 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `contrato`
---
-
-CREATE TABLE `contrato` (
-  `numero` int(11) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  `valor` float NOT NULL,
-  `empresa_nit` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `contrato`
---
-
-INSERT INTO `contrato` (`numero`, `descripcion`, `fecha`, `valor`, `empresa_nit`) VALUES
+INSERT INTO contrato VALUES
 (999, 'Recarga de 5 extintores', '2018-05-16', 500000, 12),
 (888, 'Recarga Extintores', '2018-05-23', 400000, 11);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `elemento`
---
-
-CREATE TABLE `elemento` (
-  `id` int(11) NOT NULL,
-  `contrato_numero` int(11) DEFAULT NULL,
-  `encargado_cedula` int(11) NOT NULL,
-  `piso_letra_bloque` varchar(255) NOT NULL,
-  `piso_numero` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `elemento`
---
-
-INSERT INTO `elemento` (`id`, `contrato_numero`, `encargado_cedula`, `piso_letra_bloque`, `piso_numero`) VALUES
+INSERT INTO elemento VALUES
 (1606, 999, 1234, 'C', 1),
 (13, 999, 1234, 'C', 1),
 (2431, 999, 1234, 'C', 1),
@@ -170,73 +231,21 @@ INSERT INTO `elemento` (`id`, `contrato_numero`, `encargado_cedula`, `piso_letra
 (3030, 888, 9876, 'H', 1),
 (9090, 999, 1234, 'C', 4),
 (8080, 999, 1234, 'C', 3),
-(600, 999, 1234, 'C', 4);
+(600, 999, 1234, 'C', 4),
+(2000, 999, 1234, 'D', 2);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empresa`
---
-
-CREATE TABLE `empresa` (
-  `nit` int(11) NOT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `telefono` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `empresa`
---
-
-INSERT INTO `empresa` (`nit`, `direccion`, `nombre`, `telefono`) VALUES
+INSERT INTO empresa VALUES
 (12, 'Calle 61 # 11 - 29', 'Apaga Fuegos', 45083),
 (11, 'Carrera 73A # 2 - 45', 'Fuego y Familia', 23622),
 (10, 'Km 22 via Magdalena', 'Bomberman', 88400);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `encargado`
---
-
-CREATE TABLE `encargado` (
-  `cedula` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `encargado`
---
-
-INSERT INTO `encargado` (`cedula`, `nombre`) VALUES
+INSERT INTO encargado VALUES
 (1234, 'Pepito Perez'),
 (9876, 'Juan Gomez'),
 (12345678, 'Anita Velez'),
 (10279174, 'Jose Fernando');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `extintor`
---
-
-CREATE TABLE `extintor` (
-  `idelemento` int(11) NOT NULL,
-  `caducidadanios` varchar(255) NOT NULL,
-  `estado` varchar(255) DEFAULT NULL,
-  `fechaultimarecarga` date DEFAULT NULL,
-  `fechavencimiento` date DEFAULT NULL,
-  `tamanio` varchar(255) DEFAULT NULL,
-  `elemento_id` int(11) DEFAULT NULL,
-  `fichatecnica_tipo` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `extintor`
---
-
-INSERT INTO `extintor` (`idelemento`, `caducidadanios`, `estado`, `fechaultimarecarga`, `fechavencimiento`, `tamanio`, `elemento_id`, `fichatecnica_tipo`) VALUES
+INSERT INTO extintor VALUES
 (1606, '3', 'Activo', '2018-05-16', '2021-05-16', '10 Libras', 1606, 'ABC'),
 (13, '4', 'Baja', '2018-05-21', '2022-05-21', '370 Gramos', 13, 'CO2'),
 (2431, '2', 'Mantenimiento', '2018-05-22', '2020-05-22', '15 Libras', 2431, 'ABC'),
@@ -246,61 +255,14 @@ INSERT INTO `extintor` (`idelemento`, `caducidadanios`, `estado`, `fechaultimare
 (8080, '3', 'Activo', '2018-05-25', '2021-05-25', '150 Litros', 8080, 'ABC'),
 (600, '2', 'Activo', '2018-05-28', '2020-05-28', '150 Litros', 600, 'ABC');
 
--- --------------------------------------------------------
+INSERT INTO camilla VALUES
+(2000, 1234, 'Lona', 2000);
 
---
--- Estructura de tabla para la tabla `fichatecnica`
---
-
-CREATE TABLE `fichatecnica` (
-  `tipo` varchar(255) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `componentes` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `fichatecnica`
---
-
-INSERT INTO `fichatecnica` (`tipo`, `descripcion`, `componentes`) VALUES
+INSERT INTO fichatecnica VALUES
 ('ABC', 'ABC', NULL),
 ('CO2', 'Dióxodo de Carbono', NULL);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `hibernate_sequence`
---
-
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `hibernate_sequence`
---
-
-INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(16);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `piso`
---
-
-CREATE TABLE `piso` (
-  `letra_bloque` varchar(255) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `bloque_id_sede` int(11) DEFAULT NULL,
-  `bloque_letra` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `piso`
---
-
-INSERT INTO `piso` (`letra_bloque`, `numero`, `bloque_id_sede`, `bloque_letra`) VALUES
+INSERT INTO piso VALUES
 ('C', 1, 1, 'C'),
 ('C', 2, 1, 'C'),
 ('C', 3, 1, 'C'),
@@ -323,171 +285,9 @@ INSERT INTO `piso` (`letra_bloque`, `numero`, `bloque_id_sede`, `bloque_letra`) 
 ('H', 3, 2, 'H'),
 ('H', 4, 2, 'H');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `reporte`
---
-
-CREATE TABLE `reporte` (
-  `id` int(11) NOT NULL,
-  `argumento` varchar(255) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `estado` varchar(255) DEFAULT NULL,
-  `fechareporte` date DEFAULT NULL,
-  `tipoelemento` varchar(255) DEFAULT NULL,
-  `ubicacion` varchar(255) DEFAULT NULL,
-  `leido` varchar(255) DEFAULT NULL,
-  `notificado` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `reporte`
---
-
-INSERT INTO `reporte` (`id`, `argumento`, `descripcion`, `estado`, `fechareporte`, `tipoelemento`, `ubicacion`, `leido`, `notificado`) VALUES
-(9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si'),
-(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si'),
-(11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si'),
-(12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si'),
-(13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si'),
-(14, NULL, 'Muy mal estado', 'Pendiente', '2018-07-18', 'Camilla', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si'),
-(15, NULL, 'Extintor con mal funcionamiento', 'Pendiente', '2018-08-21', 'Extintor', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sede`
---
-
-CREATE TABLE `sede` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `sede`
---
-
-INSERT INTO `sede` (`id`, `nombre`) VALUES
+INSERT INTO sede VALUES
 (1, 'Central'),
 (2, 'Palogrande'),
 (3, 'Bellas Artes'),
 (4, 'Versalles'),
 (5, 'Sancancio');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `contrasena` varchar(255) NOT NULL,
-  `usuario` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`contrasena`, `usuario`) VALUES
-('cest', 'cest'),
-('luis', 'luis');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `bloque`
---
-ALTER TABLE `bloque`
-  ADD PRIMARY KEY (`id_sede`,`letra`),
-  ADD KEY `FKpnyvsj5fo51dlgkdfe03v5ssd` (`sede_id`);
-
---
--- Indices de la tabla `botiquin`
---
-ALTER TABLE `botiquin`
-  ADD PRIMARY KEY (`idelemento`),
-  ADD KEY `FKep51xeikcux9pfunrr99yq8dl` (`elemento_id`);
-
---
--- Indices de la tabla `camilla`
---
-ALTER TABLE `camilla`
-  ADD PRIMARY KEY (`idelemento`),
-  ADD KEY `FK52b3ny3r05t6itste92e31w9p` (`elemento_id`);
-
---
--- Indices de la tabla `contrato`
---
-ALTER TABLE `contrato`
-  ADD PRIMARY KEY (`numero`),
-  ADD KEY `FKpkadjqp9hhdvd1lv468yvh38x` (`empresa_nit`);
-
---
--- Indices de la tabla `elemento`
---
-ALTER TABLE `elemento`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FKtrv05yd1likvp556qgys95kd1` (`contrato_numero`),
-  ADD KEY `FKehlggjkntopc72xntw4c4332i` (`encargado_cedula`),
-  ADD KEY `FKt6vd7xm9ha44shqek6xy71ywd` (`piso_letra_bloque`,`piso_numero`);
-
---
--- Indices de la tabla `empresa`
---
-ALTER TABLE `empresa`
-  ADD PRIMARY KEY (`nit`);
-
---
--- Indices de la tabla `encargado`
---
-ALTER TABLE `encargado`
-  ADD PRIMARY KEY (`cedula`);
-
---
--- Indices de la tabla `extintor`
---
-ALTER TABLE `extintor`
-  ADD PRIMARY KEY (`idelemento`),
-  ADD KEY `FKh7r7s38d421wi02jibl6q8d9f` (`elemento_id`),
-  ADD KEY `FKafkv4iwmt8ykwrg0ne5u49ab8` (`fichatecnica_tipo`);
-
---
--- Indices de la tabla `fichatecnica`
---
-ALTER TABLE `fichatecnica`
-  ADD PRIMARY KEY (`tipo`);
-
---
--- Indices de la tabla `piso`
---
-ALTER TABLE `piso`
-  ADD PRIMARY KEY (`letra_bloque`,`numero`),
-  ADD KEY `FKbnx8w2pjcsqbtk5ruitlost5l` (`bloque_id_sede`,`bloque_letra`);
-
---
--- Indices de la tabla `reporte`
---
-ALTER TABLE `reporte`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `sede`
---
-ALTER TABLE `sede`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`contrasena`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
