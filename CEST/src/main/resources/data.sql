@@ -39,17 +39,6 @@ INSERT INTO elemento VALUES
 (600, 999, 1234, 'C', 4),
 (2000, 999, 1234, 'D', 2);
 
-INSERT INTO empresa VALUES
-(12, 'Calle 61 # 11 - 29', 'Apaga Fuegos', 45083),
-(11, 'Carrera 73A # 2 - 45', 'Fuego y Familia', 23622),
-(10, 'Km 22 via Magdalena', 'Bomberman', 88400);
-
-INSERT INTO encargado VALUES
-(1234, 'Pepito Perez'),
-(9876, 'Juan Gomez'),
-(12345678, 'Anita Velez'),
-(10279174, 'Jose Fernando');
-
 
 INSERT INTO empresa VALUES
 (012, 'Calle 61 # 11 - 29', 'Apaga Fuegos', 4508357),
@@ -61,6 +50,8 @@ INSERT INTO empresa VALUES
 
 
 INSERT INTO encargado VALUES
+(1234, 'Juanito'),
+(9876, 'Pepita'),
 (30314336, 'Maria ludivia'),
 (1053844347, 'Maria Fernanda'),
 (12344541, 'Pepito Perez'),
@@ -117,13 +108,13 @@ INSERT INTO piso VALUES
 
 
 INSERT INTO reporte VALUES
-(9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si'),
-(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si'),
-(11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si'),
-(12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si'),
-(13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si'),
-(14, NULL, 'Muy mal estado', 'Pendiente', '2018-07-18', 'Camilla', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si'),
-(15, NULL, 'Extintor con mal funcionamiento', 'Pendiente', '2018-08-21', 'Extintor', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si');
+(9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si', NULL),
+(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL) ,
+(11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si', NULL),
+(12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si', NULL),
+(13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si', NULL),
+(14, NULL, 'Muy mal estado', 'Pendiente', '2018-07-18', 'Camilla', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si', NULL),
+(15, NULL, 'Extintor con mal funcionamiento', 'Pendiente', '2018-08-21', 'Extintor', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si', NULL);
 
 INSERT INTO sede VALUES
 (1, 'Central'),

@@ -127,7 +127,8 @@ CREATE TABLE reporte (
   tipoelemento varchar(255) DEFAULT NULL,
   ubicacion varchar(255) DEFAULT NULL,
   leido varchar(255) DEFAULT NULL,
-  notificado varchar(255) DEFAULT NULL
+  notificado varchar(255) DEFAULT NULL,
+  contacto_reporte_id int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
  
 CREATE TABLE sede (
