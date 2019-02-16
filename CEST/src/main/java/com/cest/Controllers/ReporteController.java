@@ -18,20 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cest.Dao.ReporteDAO;
-import com.cest.Dao.SedeDAO;
 import com.cest.Models.Reporte;
-
+import com.cest.Dao.SedeDAO;
+import com.cest.Models.ContactoReporte;
 
 /**
- * esta clase es el controllador de reporte encargada de realizar todos los 
- * metodos  relacionados con el reporte, tanto el registro, la modificacion,
- * como cambio de la notificacion, de estados y de leido o no. 
- * @author IngSostII
- *
- */
-
-/*
+ * esta clase es el controllador de reporte encargada de realizar todos los
+ * metodos relacionados con el reporte, tanto el registro, la modificacion, como
+ * cambio de la notificacion, de estados y de leido o no.
+ * 
  * @author Lorenzo Zuluaga Urrea
+ * 
  * @version 07/22/2018
  */
 @Controller
@@ -39,20 +36,23 @@ import com.cest.Models.Reporte;
 public class ReporteController {
 	@Autowired
 	private SedeDAO sedeDao;
-	
+
 	@Autowired
 	private ReporteDAO reporteDao;
-	
-	
-	@GetMapping(value="/registrarReporte")
+
+	@Autowired
+	private ContactoReporteController contactoReporteController;
+
+	@GetMapping(value = "/registrarReporte")
 	public String getRegistrarReporte(Model modelo) {
 		modelo.addAttribute("sedes", sedeDao.findAll());
 		return "VentanaRegistrarReporte";
 	}
-	
+
 	/**
-	 * este metodo es el encargado de tomar los datos ingresados de un nuevo 
-	 * reporte y almacenarlos. 
+	 * este metodo es el encargado de tomar los datos ingresados de un nuevo reporte
+	 * y almacenarlos.
+	 * 
 	 * @param tipoelemento
 	 * @param sede
 	 * @param bloque
@@ -60,39 +60,41 @@ public class ReporteController {
 	 * @param descripcion
 	 * @return
 	 */
-	@PostMapping(value="/registrarReporte")
-	public ModelAndView postRegistrarReporte(@RequestParam("tipoelemento") String tipoelemento
-			,@RequestParam("sede") String sede
-			,@RequestParam("bloque") String bloque
-			,@RequestParam("piso") String piso
-			,@RequestParam("descripcion") String descripcion) 
-	{
+	@PostMapping(value = "/registrarReporte")
+	public ModelAndView postRegistrarReporte(@RequestParam("tipoelemento") String tipoelemento,
+			@RequestParam("sede") String sede, @RequestParam("bloque") String bloque, @RequestParam("piso") String piso,
+			@RequestParam("descripcion") String descripcion, @RequestParam("nombre") String nombre,
+			@RequestParam("telefono") int telefono, @RequestParam("correo") String correo) {
 		Reporte reporte = new Reporte();
+		if (!nombre.equals("") || telefono > 0 || !correo.equals("")) {			
+			ContactoReporte contacto = contactoReporteController.guardarContactoReporte(nombre, telefono, correo);
+			reporte.setContactoReporte(contacto);
+			
+		}
+
 		reporte.setTipoelemento(tipoelemento);
 		Calendar fecha = new GregorianCalendar();
-		reporte.setFechareporte(LocalDate.of(fecha.get(Calendar.YEAR),fecha.get(Calendar.MONTH) + 1,fecha.get(Calendar.DAY_OF_MONTH)));
+		reporte.setFechareporte(LocalDate.of(fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH) + 1,
+				fecha.get(Calendar.DAY_OF_MONTH)));
 		reporte.setDescripcion(descripcion);
 		reporte.setEstado("Pendiente");
-		reporte.setUbicacion("Sede: "+sede+" Bloque: "+bloque+" Piso: "+piso);
+		reporte.setUbicacion("Sede: " + sede + " Bloque: " + bloque + " Piso: " + piso);
 		reporte.setLeido("No");
 		reporte.setNotificado("No");
 		reporteDao.save(reporte);
 		return new ModelAndView("redirect:/");
 	}
-	
-	
-	
-	
+
 	/**
-	 * metodo encargado de cambiar estado de la notificacion, 
-	 * se cambia su estado "notificado" si ya fue mostrado  de 
-	 * NO A SI
+	 * metodo encargado de cambiar estado de la notificacion, se cambia su estado
+	 * "notificado" si ya fue mostrado de NO A SI
+	 * 
 	 * @param id
 	 * @return
 	 */
-	@PostMapping(value="/cambiarNotificado")
+	@PostMapping(value = "/cambiarNotificado")
 	@ResponseBody
-	public Reporte cambiarNotificado(@RequestParam int id){
+	public Reporte cambiarNotificado(@RequestParam int id) {
 		for (Reporte reporte : reporteDao.findAll()) {
 			if (reporte.getId() == id) {
 				reporte.setNotificado("Si");
@@ -103,8 +105,6 @@ public class ReporteController {
 		return null;
 	}
 
-	
-	
 	/**
 	 * 
 	 * @return
@@ -120,8 +120,7 @@ public class ReporteController {
 		}
 		return reportes;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -130,7 +129,7 @@ public class ReporteController {
 	public String getConsultarReporteId(Model modelo, @RequestParam String id) {
 		if (Integer.valueOf(id) == -1) {
 			modelo.addAttribute("reportes", reporteDao.findAll());
-		}else {
+		} else {
 			List<Reporte> reportes = new LinkedList<>();
 			for (Reporte reporte : reporteDao.findAll()) {
 				if (reporte.getId() == Integer.valueOf(id)) {
@@ -142,13 +141,13 @@ public class ReporteController {
 		}
 		return "consultarReporte";
 	}
-	
+
 	@GetMapping(value = "/consultarReporteEstado")
 	public String getConsultarReporteEstado(Model modelo, @RequestParam String estado) {
 		List<Reporte> reportes = new LinkedList<>();
-		if(estado.equals("")) {
+		if (estado.equals("")) {
 			modelo.addAttribute("reportes", reporteDao.findAll());
-		}else{
+		} else {
 			for (Reporte reporte : reporteDao.findAll()) {
 				if (reporte.getEstado().equals(estado)) {
 					reportes.add(reporte);
@@ -158,41 +157,52 @@ public class ReporteController {
 		}
 		return "consultarReporte";
 	}
-	
 
 	@GetMapping(value = "/modificarReporte")
 	public Reporte getModificarReporte(@RequestParam int id) {
 		for (Reporte reporte : reporteDao.findAll()) {
 			if (reporte.getId() == id) {
 				reporte.setLeido("Si");
-				
+
 				reporteDao.save(reporte);
 				return reporte;
 			}
 		}
 		return null;
 	}
-	
-	
+
+	/**
+	 * Método que actualiza la información de un reporte
+	 * @param id Identificador del reporte a actualizar
+	 * @param descripcion Descripción del estado del elemento reportado
+	 * @param argumentacion Argumentación del estado del reporte
+	 * @return 
+	 */
 	@PostMapping(value = "/modificarReporte")
 	@ResponseBody
 	public ModelAndView postModificarReporte(@RequestParam("id") int id,
-			@RequestParam("descripcion") String descripcion,
-			@RequestParam("argumentacion") String argumentacion
-			) {
-		
+			@RequestParam("descripcion") String descripcion, 
+			@RequestParam("argumentacion") String argumentacion) {
 		for (Reporte reporte1 : reporteDao.findAll()) {
 			if (reporte1.getId() == id) {
 				Reporte reporte = reporte1;
-				reporte.setEstado("Revisado");
-				reporte.setDescripcion(descripcion);
-				reporte.setArgumento(argumentacion);
-				reporteDao.save(reporte);				
-				return new ModelAndView("redirect:/modificarReporte?id="+id);
+				ActualizarInfoReporte(descripcion, argumentacion, reporte);
+				reporteDao.save(reporte);
+				return new ModelAndView("redirect:/modificarReporte?id=" + id);
 			}
 		}
-		
 		return null;
 	}
-	
+
+	/**Método que actualiza la información de un reporte visto por el administrador
+	 * @param descripcion Descripcíon del estado del elemento reportado
+	 * @param argumentacion Argumentación sobre el estado del reporte
+	 * @param reporte Reporte al cual se actualizará información
+	 */
+	private void ActualizarInfoReporte(String descripcion, String argumentacion, Reporte reporte) {
+		reporte.setEstado("Revisado");
+		reporte.setDescripcion(descripcion);
+		reporte.setArgumento(argumentacion);
+	}
+
 }
