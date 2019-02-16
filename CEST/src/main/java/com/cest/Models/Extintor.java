@@ -23,7 +23,7 @@ public class Extintor{
 	/*Llave foranea a ficha tecnica*/
 	@OneToOne
 	private Fichatecnica fichatecnica;
-	
+
 	
 	private String tamanio;
 	private LocalDate fechaultimarecarga;

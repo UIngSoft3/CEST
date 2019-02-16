@@ -43,21 +43,27 @@ public class ReporteController {
 	@Autowired
 	private ContactoReporteController contactoReporteController;
 
-	@GetMapping(value = "/registrarReporte")
+	
+	/**
+	 * Método que por la funcion GET muestra la pagina
+	 * de registrar reporte
+	 * @param modelo
+	 * @return la pagina de registrar reporte
+	 */
+	@GetMapping(value="/registrarReporte")
 	public String getRegistrarReporte(Model modelo) {
 		modelo.addAttribute("sedes", sedeDao.findAll());
 		return "VentanaRegistrarReporte";
 	}
 
 	/**
-	 * este metodo es el encargado de tomar los datos ingresados de un nuevo reporte
-	 * y almacenarlos.
-	 * 
-	 * @param tipoelemento
-	 * @param sede
-	 * @param bloque
-	 * @param piso
-	 * @param descripcion
+	 * Método que por la función POST envia a la base de datos 
+	 * el reporte con los paramtros que recibe éste 
+	 * @param tipoelemento paramtro que contiene el tipo del elemento  
+	 * @param sede parametro que contiene el nombre de la sede del extintor a registrar
+	 * @param bloque parametro que contiene la letra del bloque del extintor a registrar
+	 * @param piso parametro que el número del piso del extintor a registrar
+	 * @param descripcion parametro que contiene la descripción del reporte
 	 * @return
 	 */
 	@PostMapping(value = "/registrarReporte")
