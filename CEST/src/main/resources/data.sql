@@ -51,17 +51,6 @@ INSERT INTO encargado VALUES
 (10279174, 'Jose Fernando');
 
 
-INSERT INTO elemento VALUES
-(1606, 999, 12344541, 'C', 1),
-(13, 999, 12344541, 'C', 1),
-(2431, 999, 12344541, 'C', 1),
-(2020, 888, 9876147, 'B', 2),
-(3030, 888, 9876147, 'H', 1),
-(9090, 999, 12344541, 'C', 4),
-(8080, 999, 12344541, 'C', 3),
-(600, 999, 12344541, 'C', 4);
-
-
 INSERT INTO empresa VALUES
 (012, 'Calle 61 # 11 - 29', 'Apaga Fuegos', 4508357),
 (001,'Cra 19 # 31', 'PSI extintores', 8809424),
