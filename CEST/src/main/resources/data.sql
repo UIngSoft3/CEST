@@ -21,8 +21,8 @@ INSERT INTO bloque VALUES
 INSERT INTO contrato VALUES
 (777, 'cambio de valvulas', '2018-12-24', 100000, 001),
 (555, 'Revision tecnica', '2019-01-31', 100000, 003),
-(999, 'Recarga de 5 extintores', '2018-05-16', 500000, 12),
-(888, 'Recarga Extintores', '2018-05-23', 400000, 11);
+(999, 'Recarga de 5 extintores', '2018-05-16', 500000, 001),
+(888, 'Recarga Extintores', '2018-05-23', 400000, 002);
 
 
 INSERT INTO elemento VALUES
@@ -33,7 +33,10 @@ INSERT INTO elemento VALUES
 (3030, 888, 9876147, 'H', 1),
 (9090, 999, 12344541, 'C', 4),
 (8080, 999, 12344541, 'C', 3),
-(600, 999, 12344541, 'C', 4);
+(600, 999, 12344541, 'C', 4),
+(1013, 555, 1053844347,'I',1),
+(1014, 777, 1053836293,'N',3),
+(1015, 999, 30295043,'J',1);
 
 
 INSERT INTO empresa VALUES
@@ -66,14 +69,18 @@ INSERT INTO extintor VALUES
 (3030, '2', 'Vencido', '2018-05-23', '2020-05-23', '2,5 Litros', 3030, 'ABC'),
 (9090, '2', 'Activo', '2018-05-24', '2020-05-24', '15 Libras', 9090, 'ABC'),
 (8080, '3', 'Activo', '2018-05-25', '2021-05-25', '150 Litros', 8080, 'ABC'),
-(600, '2', 'Activo', '2018-05-28', '2020-05-28', '150 Litros', 600, 'ABC');
+(600, '2', 'Activo', '2018-05-28', '2020-05-28', '150 Litros', 600, 'ABC'),
+(1013, '2','Activo','2018-08-04', '2020-08-04', '10 Libras', 1013, 'BC'),
+(1014, '1','Activo','2018-11-07', '2019-11-07', '15 Libras', 1014, 'ABC'),
+(1015, '3','Activo','2018-12-01', '2021-12-01', '5 Libras', 1015, 'CO2');
+
 
 
 INSERT INTO fichatecnica VALUES
 ('ABC','multiproposito','sirve para apagar incendiosmadera'),
 ('Solkaflam','multiproposito, polvo quimico','sirve para apagar incendios'),
 ('BC','multiproposito, agua','sirve para apagar incendioselecctronicos'),
-('CO2', 'Dióxodo de Carbono', NULL);
+('CO2', 'Dióxodo de Carbono', 'para incendios eléctricos');
 
 
 
@@ -98,8 +105,13 @@ INSERT INTO piso VALUES
 ('H', 1, 2, 'H'),
 ('H', 2, 2, 'H'),
 ('H', 3, 2, 'H'),
-('H', 4, 2, 'H');
-
+('H', 4, 2, 'H'),
+('I', 1, 2, 'I'),
+('I', 2, 2, 'I'),
+('J', 1, 2, 'J'),
+('N', 1, 3, 'N'),
+('N', 2, 3, 'N'),
+('N', 3, 3, 'N');
 
 
 INSERT INTO reporte VALUES

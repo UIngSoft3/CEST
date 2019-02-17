@@ -64,4 +64,10 @@ public class ExtintorControllerPostActualizarExtintorTest {
 			assertNotSame(datosAntes[i], datosDespues[i]);
 		}	
 	}
+	
+	@Test
+	public void modificarExtintorNoExistenteTest() {
+		extintorController.postActualizar("12", "9876", "888", "40 Libras", "CO2", "2018-05-16", "4", "2021-05-16", "Activo", "Central", "C", "1");
+		assertNull(extintorController.getExtintor("12"));
+	}
 }

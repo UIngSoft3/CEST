@@ -210,20 +210,21 @@ public class ExtintorController {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @param cedulaencargado
-	 * @param numerocontrato
-	 * @param tamanio
-	 * @param tipo
-	 * @param fecharecarga
-	 * @param caducidad
-	 * @param fechavencimiento
-	 * @param estado
-	 * @param nombresede
-	 * @param letrabloque
-	 * @param numeropiso
-	 * @return
+	 * Métod que actualiza los datos de un extintor
+	 * en a base de datos
+	 * @param id parametro con contiene el id del extintor a actualizar
+	 * @param cedulaencargado parametro que contien la cedula de la persona encargada
+	 * @param numerocontrato parametro que contien el número del contrato del extintor
+	 * @param tamanio parametro que contiene el tamaño del extintor
+	 * @param tipo parametro que contien el tipo de extintor
+	 * @param fecharecarga parametro que contiene la fecha de la ultima recarga del extintor
+	 * @param caducidad paramentro que contiene la catindad de años en que al extintor se le realiza la proxima recarga
+	 * @param fechavencimiento parametro que contiene la fecha del proximo manenimineto
+	 * @param estado paramentro que indica en que estado esta el extintor
+	 * @param nombresede parametro que contiene el nombre de la sede donde esta ubicado el extintor 
+	 * @param letrabloque parametro que contiene la letra del bloque donde esta ubicado el extintor
+	 * @param numeropiso parametro que contiene el número del piso donde esta ubicado el extintor
+	 * @return 
 	 */
 	@PostMapping(value = "/actualizarExtintor")
 	public ModelAndView postActualizar(@RequestParam("id") String id
