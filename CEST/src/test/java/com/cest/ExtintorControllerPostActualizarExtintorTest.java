@@ -2,6 +2,7 @@ package com.cest;
 
 
 import static org.junit.Assert.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,6 +70,7 @@ public class ExtintorControllerPostActualizarExtintorTest {
 	@Test
 	public void modificarExtintorNoExistenteTest() {
 		extintorController.postActualizar("12", "9876", "888", "40 Libras", "CO2", "2018-05-16", "4", "2021-05-16", "Activo", "Central", "C", "1");
-		assertNull(extintorController.getExtintor("12"));
+		Extintor extintor = extintorController.getExtintor("12"); 
+		assertNull(extintor);
 	}
 }

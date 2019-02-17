@@ -121,7 +121,7 @@ INSERT INTO piso VALUES
 
 INSERT INTO reporte VALUES
 (9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si', NULL),
-(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL) ,
+(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL),
 (11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si', NULL),
 (12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si', NULL),
 (13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si', NULL),
