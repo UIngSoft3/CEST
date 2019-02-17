@@ -141,8 +141,23 @@ public class ConsultaController {
 		}
 	}
 	
+	/**
+	 * Método que obtiene la lista general de todos los Extintores y Camillas 
+	 * almacenados en la base de datos
+	 * @return elementos Lista general de elementos
+	 */
 	private List<Element> ObtenerElementos(){
 		List<Element> elementos = new LinkedList<>();
+		ObtenerExtintores(elementos);
+		ObtenerCamillas(elementos);
+		return elementos;
+	}
+	
+	/**Método que obtiene todos los Extintores almacenados en la base de datos
+	 * @param elementos Lista donde serán almacenados todos los Extintores y 
+	 * 					posteriormente todas las Camillas
+	 */
+	private void ObtenerExtintores(List<Element> elementos) {
 		String tipoelemento;
 		int id;
 		String ubicacion;
@@ -160,6 +175,18 @@ public class ConsultaController {
 				elementos.add(new Element(tipoelemento, id, ubicacion, tipoo, fechavencimiento));
 			}				
 		}
+	}
+
+	/** Método que obtiene todas las Camillas almacenadas en la base de datos
+	 * @param elementos Lista donde seŕan almacenadas todas las Camillas
+	 * 					junto a los Extintores previamente almacenados
+	 */
+	private void ObtenerCamillas(List<Element> elementos) {
+		String tipoelemento;
+		int id;
+		String ubicacion;
+		String tipoo;
+		String fechavencimiento;
 		for (Camilla camilla : camillaDao.findAll()) {
 			tipoelemento = "Camilla";
 			id = camilla.getIdelemento();
@@ -170,8 +197,8 @@ public class ConsultaController {
 			fechavencimiento = "No aplica";
 			elementos.add(new Element(tipoelemento, id, ubicacion, tipoo, fechavencimiento));
 		}
-		return elementos;
 	}
+
 	
 	@PostMapping(value = "/buscarElementoTipo")
 	@ResponseBody

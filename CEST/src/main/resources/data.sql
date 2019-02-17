@@ -1,3 +1,8 @@
+insert into usuario values ('user','user');
+insert into usuario values ('cest','cest');
+insert into usuario values ('luis','luis');
+
+
 INSERT INTO bloque VALUES
 (1, 'C', 'Edificio Central', 1),
 (1, 'B', 'Edificio Central', 1),
@@ -17,13 +22,11 @@ INSERT INTO bloque VALUES
 (5, 'F', 'Edificio Ciencias Agropecuarias', 5),
 (5, 'G', 'Edificio Ciencias Agropecuarias', 5);
 
-
 INSERT INTO contrato VALUES
 (777, 'cambio de valvulas', '2018-12-24', 100000, 001),
 (555, 'Revision tecnica', '2019-01-31', 100000, 003),
 (999, 'Recarga de 5 extintores', '2018-05-16', 500000, 001),
 (888, 'Recarga Extintores', '2018-05-23', 400000, 002);
-
 
 INSERT INTO elemento VALUES
 (1606, 999, 12344541, 'C', 1),
@@ -36,7 +39,8 @@ INSERT INTO elemento VALUES
 (600, 999, 12344541, 'C', 4),
 (1013, 555, 1053844347,'I',1),
 (1014, 777, 1053836293,'N',3),
-(1015, 999, 30295043,'J',1);
+(1015, 999, 30295043,'J',1),
+(2000, 999, 1234, 'D', 2);
 
 
 INSERT INTO empresa VALUES
@@ -49,6 +53,8 @@ INSERT INTO empresa VALUES
 
 
 INSERT INTO encargado VALUES
+(1234, 'Juanito'),
+(9876, 'Pepita'),
 (30314336, 'Maria ludivia'),
 (1053844347, 'Maria Fernanda'),
 (12344541, 'Pepito Perez'),
@@ -58,7 +64,6 @@ INSERT INTO encargado VALUES
 (1053821139, 'Angelo Osorio'),
 (30295043, 'Ana Maria'),
 (10279174, 'Jose Fernando');
-
 
 
 INSERT INTO extintor VALUES
@@ -75,13 +80,14 @@ INSERT INTO extintor VALUES
 (1015, '3','Activo','2018-12-01', '2021-12-01', '5 Libras', 1015, 'CO2');
 
 
+INSERT INTO camilla VALUES
+(2000, 1234, 'Lona', 2000);
 
 INSERT INTO fichatecnica VALUES
 ('ABC','multiproposito','sirve para apagar incendiosmadera'),
 ('Solkaflam','multiproposito, polvo quimico','sirve para apagar incendios'),
 ('BC','multiproposito, agua','sirve para apagar incendioselecctronicos'),
 ('CO2', 'Dióxodo de Carbono', 'para incendios eléctricos');
-
 
 
 INSERT INTO piso VALUES
@@ -113,17 +119,14 @@ INSERT INTO piso VALUES
 ('N', 2, 3, 'N'),
 ('N', 3, 3, 'N');
 
-
 INSERT INTO reporte VALUES
-(9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si'),
-(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si'),
-(11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si'),
-(12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si'),
-(13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si'),
-(14, NULL, 'Muy mal estado', 'Pendiente', '2018-07-18', 'Camilla', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si'),
-(15, NULL, 'Extintor con mal funcionamiento', 'Pendiente', '2018-08-21', 'Extintor', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si');
-
-
+(9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si', NULL),
+(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL) ,
+(11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si', NULL),
+(12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si', NULL),
+(13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si', NULL),
+(14, NULL, 'Muy mal estado', 'Pendiente', '2018-07-18', 'Camilla', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si', NULL),
+(15, NULL, 'Extintor con mal funcionamiento', 'Pendiente', '2018-08-21', 'Extintor', 'Sede: Central Bloque: B Piso: 2', 'No', 'Si', NULL);
 
 INSERT INTO sede VALUES
 (1, 'Central'),
@@ -131,11 +134,3 @@ INSERT INTO sede VALUES
 (3, 'Bellas Artes'),
 (4, 'Versalles'),
 (5, 'Sancancio');
-
-
-
-INSERT INTO usuario VALUES
-('cest', 'cest'),
-('daniel','daniel'),
-('luis', 'luis');
-

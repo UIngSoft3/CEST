@@ -127,7 +127,8 @@ CREATE TABLE reporte (
   tipoelemento varchar(255) DEFAULT NULL,
   ubicacion varchar(255) DEFAULT NULL,
   leido varchar(255) DEFAULT NULL,
-  notificado varchar(255) DEFAULT NULL
+  notificado varchar(255) DEFAULT NULL,
+  contacto_reporte_id int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
  
 CREATE TABLE sede (
@@ -238,14 +239,12 @@ INSERT INTO empresa VALUES
 (10, 'Km 22 via Magdalena', 'Bomberman', 88400),
 (001,'Cra 19 # 31', 'PSI extintores', 8809424);
 
-
 INSERT INTO encargado VALUES
 (1234, 'Pepito Perez'),
 (9876, 'Juana Gomez'),
 (12345678, 'Anita Velez'),
 (10279174, 'Jose Fernando'),
 (9876147, 'Juan Gomez');
-
 
 INSERT INTO extintor VALUES
 (1606, '3', 'Activo', '2018-05-16', '2021-05-16', '10 Libras', 1606, 'ABC'),

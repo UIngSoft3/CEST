@@ -1,6 +1,5 @@
 package com.cest.Controllers;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -398,11 +397,21 @@ public class ExtintorController {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Método que sirve para buscar los extintores que se encuentren la ubicación 
+	 * seleccionada por el usuario
+	 * @param sede La sede donde se encuentra el/los extintor/es
+	 * @param bloque El bloque o edificio de esa sede donde se encuentra el/los extintor/es
+	 * @param piso El piso de ese bloque donde se encuentra el/los extintor/es
+	 * @return extintores Lista de extintores que cumplen con los parámetros de la ubicación seleccionada
+	 * @author Luis Trejos
+=======
 	 * 
 	 * @param sede
 	 * @param bloque
 	 * @param piso
 	 * @return
+>>>>>>> dfb0c8499797efc6a9d66cf1c8f5ed1420cbf3d1
 	 */
 	@PostMapping(value = "/buscarUbicacion")
 	@ResponseBody

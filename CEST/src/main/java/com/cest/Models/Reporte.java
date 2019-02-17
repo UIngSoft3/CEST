@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /*
  * Esta clase contiene los atributos que tiene un reporte
@@ -24,6 +25,10 @@ public class Reporte {
 	private String ubicacion;
 	private String leido;
 	private String notificado;
+	
+	@OneToOne
+	private ContactoReporte contactoReporte;
+	
 	
 	public Reporte() {
 		// TODO Auto-generated constructor stub
@@ -174,6 +179,22 @@ public class Reporte {
 	 */
 	public void setNotificado(String notificado) {
 		this.notificado = notificado;
+	}
+
+
+	/**
+	 * @return the contactoReporte
+	 */
+	public ContactoReporte getContactoReporte() {
+		return contactoReporte;
+	}
+
+
+	/**
+	 * @param contactoReporte the contactoReporte to set
+	 */
+	public void setContactoReporte(ContactoReporte contactoReporte) {
+		this.contactoReporte = contactoReporte;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.cest;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
