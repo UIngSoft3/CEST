@@ -25,18 +25,21 @@ INSERT INTO bloque VALUES
 INSERT INTO contrato VALUES
 (777, 'cambio de valvulas', '2018-12-24', 100000, 001),
 (555, 'Revision tecnica', '2019-01-31', 100000, 003),
-(999, 'Recarga de 5 extintores', '2018-05-16', 500000, 12),
-(888, 'Recarga Extintores', '2018-05-23', 400000, 11);
+(999, 'Recarga de 5 extintores', '2018-05-16', 500000, 001),
+(888, 'Recarga Extintores', '2018-05-23', 400000, 002);
 
 INSERT INTO elemento VALUES
-(1606, 999, 1234, 'C', 1),
-(13, 999, 1234, 'C', 1),
-(2431, 999, 1234, 'C', 1),
-(2020, 888, 9876, 'B', 2),
-(3030, 888, 9876, 'H', 1),
-(9090, 999, 1234, 'C', 4),
-(8080, 999, 1234, 'C', 3),
-(600, 999, 1234, 'C', 4),
+(1606, 999, 12344541, 'C', 1),
+(13, 999, 12344541, 'C', 1),
+(2431, 999, 12344541, 'C', 1),
+(2020, 888, 9876147, 'B', 2),
+(3030, 888, 9876147, 'H', 1),
+(9090, 999, 12344541, 'C', 4),
+(8080, 999, 12344541, 'C', 3),
+(600, 999, 12344541, 'C', 4),
+(1013, 555, 1053844347,'I',1),
+(1014, 777, 1053836293,'N',3),
+(1015, 999, 30295043,'J',1),
 (2000, 999, 1234, 'D', 2);
 
 
@@ -71,7 +74,11 @@ INSERT INTO extintor VALUES
 (3030, '2', 'Vencido', '2018-05-23', '2020-05-23', '2,5 Litros', 3030, 'ABC'),
 (9090, '2', 'Activo', '2018-05-24', '2020-05-24', '15 Libras', 9090, 'ABC'),
 (8080, '3', 'Activo', '2018-05-25', '2021-05-25', '150 Litros', 8080, 'ABC'),
-(600, '2', 'Activo', '2018-05-28', '2020-05-28', '150 Litros', 600, 'ABC');
+(600, '2', 'Activo', '2018-05-28', '2020-05-28', '150 Litros', 600, 'ABC'),
+(1013, '2','Activo','2018-08-04', '2020-08-04', '10 Libras', 1013, 'BC'),
+(1014, '1','Activo','2018-11-07', '2019-11-07', '15 Libras', 1014, 'ABC'),
+(1015, '3','Activo','2018-12-01', '2021-12-01', '5 Libras', 1015, 'CO2');
+
 
 INSERT INTO camilla VALUES
 (2000, 1234, 'Lona', 2000);
@@ -80,7 +87,7 @@ INSERT INTO fichatecnica VALUES
 ('ABC','multiproposito','sirve para apagar incendiosmadera'),
 ('Solkaflam','multiproposito, polvo quimico','sirve para apagar incendios'),
 ('BC','multiproposito, agua','sirve para apagar incendioselecctronicos'),
-('CO2', 'Dióxodo de Carbono', NULL);
+('CO2', 'Dióxodo de Carbono', 'para incendios eléctricos');
 
 
 INSERT INTO piso VALUES
@@ -104,12 +111,17 @@ INSERT INTO piso VALUES
 ('H', 1, 2, 'H'),
 ('H', 2, 2, 'H'),
 ('H', 3, 2, 'H'),
-('H', 4, 2, 'H');
-
+('H', 4, 2, 'H'),
+('I', 1, 2, 'I'),
+('I', 2, 2, 'I'),
+('J', 1, 2, 'J'),
+('N', 1, 3, 'N'),
+('N', 2, 3, 'N'),
+('N', 3, 3, 'N');
 
 INSERT INTO reporte VALUES
 (9, NULL, 'Extintor en mal estado', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Central Bloque: C Piso: 2', 'Si', 'Si', NULL),
-(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL) ,
+(10, NULL, 'malisimo re pesimo', 'Pendiente', '2018-06-09', 'Extintor', 'Sede: Palogrande Bloque: H Piso: 2', 'No', 'Si', NULL),
 (11, NULL, 'dwefewr', 'Pendiente', '2018-06-09', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'No', 'Si', NULL),
 (12, NULL, 'malo', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: A Piso: 1', 'Si', 'Si', NULL),
 (13, NULL, 'dasd', 'Pendiente', '2018-06-18', 'Botiquin', 'Sede: Central Bloque: C Piso: 2', 'No', 'Si', NULL),
